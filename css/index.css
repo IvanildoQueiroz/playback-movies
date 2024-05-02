@@ -1,0 +1,92 @@
+@import url("https://fonts.googleapis.com/css2?family=Jersey+20&display=swap");
+:root {
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body,
+html {
+  width: 100%;
+  height: 100vh;
+  background-color: #0c0c0c;
+}
+.container {
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(to bottom, transparent 10%, #0c0c0c 80%),
+    url("../assets/bodyBack.jpg");
+  background-size: cover;
+  background-repeat: repeat;
+  background-attachment: fixed;
+  opacity: 0.85;
+}
+.page_1 {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+#findMovie {
+  width: 50%;
+  height: 90px;
+  margin: 20px auto;
+  border-radius: 40px;
+  border: 3px solid gray;
+  background-color: #0c0c0c94;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+#findMovie input {
+  width: 100%;
+  border-radius: 20px;
+  padding-left: 10px;
+  font-size: 26px;
+  color: gray;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  caret-color: aqua;
+}
+#findMovie img {
+  cursor: pointer;
+  width: 8%;
+}
+#carosel-movies {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  color: #fff;
+  font: normal 200 1.8em "Jersey 20", sans-serif;
+}
+.list-movies {
+  width: 80%;
+  height: 90%;
+  margin: 0px auto;
+  display: flex;
+  justify-content: space-around;
+  gap: 20px;
+}
+.active-movies {
+  background-color: aliceblue;
+  width: 485px;
+  height: max(650px, 80%);
+  list-style: none;
+  position: relative;
+  background-repeat: no-repeat;
+  background-size: auto;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  align-items: start;
+  padding: 5px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 3px #fff;
+  cursor: pointer;
+}
+.active-movies p {
+  font: normal 17px helvetica;
+}
