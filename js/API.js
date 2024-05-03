@@ -32,6 +32,28 @@ function getMoviesApi(mov) {
       movies.appendChild(li);
     }
   }
+  function getAllMoviesTheme(mov){
+    for (let i = 0; i <= 2; i++) {
+      const li = document.createElement("li");
+      let title = document.createElement("h2");
+      title.innerHTML = mov[i].title;
+      let img = document.createElement('img');
+      img.setAttribute('src',`https://image.tmdb.org/t/p/w500/${mov[i].poster_path})`);
+      let p1 = document.createElement("p");
+      if(mov[i].original_language == 'en'){p1.innerHTML = 'English'};
+      let p2 = document.createElement("p");
+      p2.innerHTML = mov[i].overview;
+      li.appendChild(title);
+      li.appendChild(img);
+      li.appendChild(p1);
+      li.appendChild(p2);
+      //li.style.backgroundImage = `url(https://image.tmdb.org/t/p/w500/${mov[i].poster_path})`;
+      li.classList.add("active-movies");
+      movies.appendChild(li);
+    }
+    console.log(mov)
+  }
+  getAllMoviesTheme(mov)
   cardsMoviesInitial(mov);
 }
 function actionNavbar(){
