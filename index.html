@@ -4,29 +4,63 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Movies</title>
-    <script src="js/API.js"></script>
+    <script src="js/API.js" defer></script>
     <link rel="stylesheet" href="css/index.css" />
   </head>
   <body>
     <div class="container">
-      <!-- <header>
+      <header>
+        <img src="assets/menu_icon.png" alt="menu" id="menuNavbar" class="">
             <div class="navbar">
-                <ul class="listNavbar">
-                    <ul class="navFilms"></ul>
-                    <li class="navSeries"></li>
-                    <li class="navLançamentos"></li>
-                </ul>
-            </div>
-        </header> -->
+                <div class="listNavbar">
+                  <div class="login">
+                    <div id="photo"></div>
+                    <p id="nameUser">User</p>
+                    </div>
+                    <img src="assets/icons-excluir.png" alt="" role="button" id="iconClose">
+                    <article id="chooseTypeFilm">
+                      <div>
+                        <ul class="navFilms navType">
+                          <h3>Filmes</h3>
+                          <li><a href="#filmsActions">ação</a></li>
+                          <li><a href="#filmsTerror">Terror</a></li>
+                          <li><a href="#filmsthriller">Suspense</a></li>
+                          <li><a href="#filmsRomance">Suspense</a></li>
+                        </ul>
+                      </div>
+                      <div>
+                        <ul class="navSeries navType">
+                          <h3>Series</h3>
+                          <li><a href="#seriesActions">ação</a></li>
+                          <li><a href="#seriesTerror">Terror</a></li>
+                          <li><a href="#seriesthriller">Suspense</a></li>
+                          <li><a href="#seriesRomance">Suspense</a></li>
+                        </ul>
+                      </div>
+                      <div>
+                        <ul class="navLançamentos navType">
+                          <h3>Lnaçamentos</h3>
+                          <li><a href="#lancActions">ação</a></li>
+                          <li><a href="#lancTerror">Terror</a></li>
+                          <li><a href="#lancthriller">Suspense</a></li>
+                          <li><a href="#lancRomance">Suspense</a></li>
+                        </ul>
+                      </div>
+                    </ul>
+                    <div class="logout">
+                      <p>logout</p>
+                      <img src="assets/icons-exit.png" alt="image">
+                    </div>
+                    </article>
+                  </div>
+                  
+        </header>
       <section class="page_1">
         <div id="findMovie">
           <input type="text" placeholder="Find yours movies" /><img
-            src="assets/find_icon.png"
-            alt=""
-          />
+            src="assets/find_icon.png" alt=""/>
         </div>
         <article id="carosel-movies">
-          <h2>Mais visitados</h2>
           <ul class="list-movies"></ul>
         </article>
       </section>

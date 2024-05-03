@@ -17,17 +17,34 @@ function getMoviesApi(mov) {
       const li = document.createElement("li");
       let title = document.createElement("h2");
       title.innerHTML = mov[i].title;
+      let img = document.createElement('img');
+      img.setAttribute('src',`https://image.tmdb.org/t/p/w500/${mov[i].poster_path})`);
       let p1 = document.createElement("p");
-      p1.innerHTML = mov[i].original_language;
+      if(mov[i].original_language == 'en'){p1.innerHTML = 'English'};
       let p2 = document.createElement("p");
       p2.innerHTML = mov[i].overview;
       li.appendChild(title);
+      li.appendChild(img);
       li.appendChild(p1);
       li.appendChild(p2);
-      li.style.backgroundImage = `url(https://image.tmdb.org/t/p/w500/${mov[i].poster_path})`;
+      //li.style.backgroundImage = `url(https://image.tmdb.org/t/p/w500/${mov[i].poster_path})`;
       li.classList.add("active-movies");
       movies.appendChild(li);
     }
   }
   cardsMoviesInitial(mov);
 }
+function actionNavbar(){
+  const navBar = document.querySelector('.navbar');
+  const btnClose = document.querySelector('#iconClose');
+  const butnOpen = document.querySelector('#menuNavbar');
+
+  btnClose.addEventListener('click',()=>{
+    navBar.classList.toggle('active-navbar');
+  })
+  butnOpen.addEventListener('click',()=>{
+    navBar.classList.add('active-navbar');
+   
+  })
+}
+actionNavbar();
