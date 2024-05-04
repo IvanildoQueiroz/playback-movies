@@ -139,7 +139,7 @@ header {
 }
 .page_1,
 .page_2 {
-  width: 100vw;
+  width:max(150px);
   height: 100%;
   display: flex;
   flex-direction: column;
