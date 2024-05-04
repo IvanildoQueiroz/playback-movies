@@ -141,7 +141,7 @@ header {
   right: 0px;
 }
 #findMovie {
-  width: 40%;
+  width: max(150px,40%);
   height: 50px;
   margin: 20px auto;
   border-radius: 40px;
@@ -155,7 +155,7 @@ header {
   width: 100%;
   border-radius: 20px;
   padding-left: 10px;
-  font-size: 26px;
+  font-size: 100%;
   color: gray;
   background-color: transparent;
   border: none;
