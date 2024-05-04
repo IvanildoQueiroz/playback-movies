@@ -253,10 +253,10 @@ header {
 
 .page_2 :where(.terror, .action, .lanc) {
   height: 85%;
-  width: max(7120px, 100%);
+  width:100%;
   display: flex;
   list-style: none;
-  gap: 2%;
+  gap: 10px;
   overflow: auto;
 }
 
