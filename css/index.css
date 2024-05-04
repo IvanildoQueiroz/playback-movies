@@ -141,7 +141,7 @@ header {
   right: 0px;
 }
 #findMovie {
-  width: max(150px,40%);
+  width: max(250px,40%);
   height: 50px;
   margin: 20px auto;
   border-radius: 40px;
@@ -162,8 +162,8 @@ header {
   outline: none;
   caret-color: aqua;
 }
-#findMovie input::placeholder {
-  font-size: 1em;
+#findMovie input::placeholder{
+  font-size:max( 15px,1.2vw);
 }
 #findMovie img {
   cursor: pointer;
