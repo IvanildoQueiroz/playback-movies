@@ -144,6 +144,8 @@ header {
   display: flex;
   flex-direction: column;
   position: relative;
+  left: 0px;
+  bottom: 0px;
 }
 #findMovie {
   width: 40%;
