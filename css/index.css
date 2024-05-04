@@ -21,7 +21,7 @@ html {
   background-image: linear-gradient(to bottom, transparent 10%, #0c0c0c 80%),
     url("../assets/bodyBack.jpg");
   background-size: cover;
-  background-repeat: repeat;
+  background-repeat: no-repeat;
   background-attachment: fixed;
   opacity: 0.85;
 }
