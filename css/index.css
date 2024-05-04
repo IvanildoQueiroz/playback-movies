@@ -246,12 +246,11 @@ padding-left: 10px;
 }
 .carosel-films-theme h2{
   padding-left: 5px;
-  margin:10px 0;
+  margin:10px 0px;
   border-radius: 5px;
   font: 500 1.3em 'Changa';
   color: green;
   background-image: linear-gradient(to right,rgba(255, 255, 255, 0.644),rgba(255, 255, 255, 0.012));
-  background-repeat: no-repeat;
 }
 
 .page_2 :where(.terror,.action,.lanc){
