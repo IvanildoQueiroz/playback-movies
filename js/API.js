@@ -32,7 +32,6 @@ function getMoviesApi(mov) {
       p2.innerHTML = mov[i].overview;
       li.appendChild(title);
       li.appendChild(img);
-      li.appendChild(p1);
       li.appendChild(p2);
       li.classList.add("active-movies");
       movies.appendChild(li);
