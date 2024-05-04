@@ -7,13 +7,14 @@
   padding: 0;
   box-sizing: border-box;
 }
-body,
-html {
+body {
   height: 100vh;
-  position: relative;
   width: 100vw;
-  background-image:linear-gradient(to left,rgb(4, 60, 4),green,rgb(19, 27, 19)) ;;
-
+  position: relative;
+  background-image:linear-gradient(to left,rgb(4, 60, 4),green,rgb(19, 27, 19));
+ background-repeat: no-repeat;
+ 
+  background-attachment:fixed;
 }
 .container {
   width: 100%;
@@ -243,7 +244,7 @@ padding-left: 10px;
   border-radius: 5px;
   font: 500 1.3em 'Changa';
   color: green;
-  background-image: linear-gradient(to left,rgba(255, 255, 255, 0.644),rgba(255, 255, 255, 0.012));
+  background-image: linear-gradient(to right,rgba(255, 255, 255, 0.644),rgba(255, 255, 255, 0.012));
 }
 .page_2,.carosel-films-theme {
   
