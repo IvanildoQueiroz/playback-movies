@@ -28,15 +28,15 @@ header {
   width: 300px;
   height: 100vh;
 }
-/* #menuNavbar {
+#menuNavbar {
   position: absolute;
   top: 37px;
   left: 30px;
   scale: 1;
   width: 30px;
   cursor: pointer;
-  z-index: ;
-} */
+  z-index: 88;
+}
 #iconClose {
   position: absolute;
   top: 5px;
@@ -253,7 +253,7 @@ header {
 
 .page_2 :where(.terror, .action, .lanc) {
   height: 85%;
-  width: max(720px, 100%);
+  width: max(7120px, 100%);
   display: flex;
   list-style: none;
   gap: 2%;
