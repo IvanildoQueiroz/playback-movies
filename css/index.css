@@ -13,7 +13,7 @@ body {
   position: relative;
   background-image:linear-gradient(to left,rgb(4, 60, 4),green,rgb(19, 27, 19));
  background-repeat: no-repeat;
- 
+ background-size: contain;
   background-attachment:fixed;
 }
 .container {
@@ -162,6 +162,9 @@ padding-left: 10px;
   border: none;
   outline: none;
   caret-color: aqua;
+}
+#findMovie input::placeholder{
+ font-size: 100%;
 }
 #findMovie img {
   cursor: pointer;
