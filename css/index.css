@@ -11,6 +11,7 @@ html,body{
   height: 100vh;
   width: 100vw;
   position: relative;
+  background-color: rgb(21, 115, 85);
 }
 .container {
   width: 100%;
@@ -34,6 +35,7 @@ header {
   scale: 1;
   width: 30px;
   cursor: pointer;
+  z-index: 10;
 }
 #iconClose {
   position: absolute;
@@ -237,6 +239,7 @@ header {
   position: relative;
   margin: 5px 0;
   padding: 0 10px;
+
 }
 .carosel-films-theme h2 {
   width: 100%;
@@ -245,7 +248,7 @@ header {
   border-radius: 5px;
   font: 500 1.3em "Changa";
   color: green;
-
+  background-image: linear-gradient(to left, rgba(255, 253, 253, 0.071),rgb(255, 255, 255));
 }
 
 .page_2 :where(.terror, .action, .lanc) {
