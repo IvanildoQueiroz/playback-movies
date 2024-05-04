@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Changa:wght@200..800&family=Titan+One&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Changa:wght@200..800&family=Titan+One&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Jersey+20&display=swap");
 :root {
 }
@@ -11,10 +11,15 @@ body {
   height: 100vh;
   width: 100vw;
   position: relative;
-  background-image:linear-gradient(to left,rgb(4, 60, 4),green,rgb(19, 27, 19));
- background-repeat: no-repeat;
- background-size: contain;
-  background-attachment:fixed;
+  background-image: linear-gradient(
+    to left,
+    rgb(4, 60, 4),
+    green,
+    rgb(19, 27, 19)
+  );
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-attachment: fixed;
 }
 .container {
   width: 100%;
@@ -26,66 +31,64 @@ body {
   background-attachment: fixed;
   opacity: 0.85;
 }
-header{
+header {
   position: absolute;
   width: 300px;
   height: 100vh;
 }
-#menuNavbar{
+#menuNavbar {
   position: absolute;
   top: 37px;
   left: 30px;
-  scale:1 ;
+  scale: 1;
   width: 30px;
   cursor: pointer;
 }
-#iconClose{
+#iconClose {
   position: absolute;
   top: 5px;
   right: 5px;
   width: 30px;
   cursor: pointer;
-  transition: all .2s ease;
+  transition: all 0.2s ease;
 }
-#iconClose:hover{
- transform: scale(1.1);
- background-color: rgba(0, 255, 255, 0.274);
+#iconClose:hover {
+  transform: scale(1.1);
+  background-color: rgba(0, 255, 255, 0.274);
 }
-.login{
+.login {
   margin-bottom: 20px;
 }
-.login #photo{
+.login #photo {
   background-color: #fff;
   width: 200px;
   height: 200px;
   border-radius: 50%;
   margin: 30px auto;
 }
-.login #nameUser{
+.login #nameUser {
   color: #fff;
 }
-.navType{
-width: 100%;
-height: 50px;
-cursor: pointer;
-margin: 10px 0;
-border: 3px solid;
-text-align: left;
-padding-left: 10px;
-
+.navType {
+  width: 100%;
+  height: 50px;
+  cursor: pointer;
+  margin: 10px 0;
+  border: 3px solid;
+  text-align: left;
+  padding-left: 10px;
 }
-.navType:hover{
+.navType:hover {
   height: 100%;
   cursor: pointer;
-  
 }
-.navType li a{
+.navType li a {
   text-decoration: none;
   color: rgb(243, 240, 240);
   font: normal 15px helvetica;
   width: 100%;
 }
-.navType li{
+.navType li {
   width: 100%;
   opacity: 0;
   scale: 0;
@@ -93,17 +96,17 @@ padding-left: 10px;
   text-indent: 30px;
   margin: 7px 0px;
 }
-.navType li a:hover{
- text-decoration:solid;
+.navType li a:hover {
+  text-decoration: solid;
   cursor: pointer;
   background-color: #ffffff57;
   width: 100%;
 }
-.navType:hover li{
+.navType:hover li {
   scale: 1;
   opacity: 1;
 }
-.navbar{
+.navbar {
   scale: 0;
   height: 100%;
   width: 250px;
@@ -112,10 +115,10 @@ padding-left: 10px;
   font-family: "Jersey 20", sans-serif;
   color: white;
   text-align: center;
-  z-index:3;
+  z-index: 3;
   background-color: #277e7ee5;
 }
-.logout{
+.logout {
   position: absolute;
   bottom: 10px;
   right: 0px;
@@ -128,14 +131,15 @@ padding-left: 10px;
   padding: 0 10px;
   box-shadow: 0px 0px 3px #fff;
 }
-.logout img{
+.logout img {
   width: 40px;
 }
-.active-navbar{
+.active-navbar {
   scale: 1;
 }
-.page_1,.page_2 {
-  width: 100%;
+.page_1,
+.page_2 {
+  width: 100vw;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -163,14 +167,14 @@ padding-left: 10px;
   outline: none;
   caret-color: aqua;
 }
-#findMovie input::placeholder{
- font-size: 100%;
+#findMovie input::placeholder {
+  font-size: 1em;
 }
 #findMovie img {
   cursor: pointer;
   width: 5%;
 }
-.page_1 h1{
+.page_1 h1 {
   color: rgb(9, 209, 199);
   text-shadow: 0px 0px 3px #fff;
   font: 300 4em "Changa", sans-serif;
@@ -195,92 +199,92 @@ padding-left: 10px;
   display: flex;
   gap: 20px;
 }
-.active-movies{
+.active-movies {
   scroll-snap-align: center;
   scroll-snap-stop: always;
-  width:100%;
+  width: 100%;
   display: flex;
   padding-left: 20px;
-  background-image:linear-gradient(to left,black,rgba(0, 0, 0, 0.508));
+  background-image: linear-gradient(to left, black, rgba(0, 0, 0, 0.508));
   position: relative;
 }
-.active-movies :where(h2,p){
+.active-movies :where(h2, p) {
   position: absolute;
   right: 10%;
   z-index: 2;
   color: #fff;
-  text-shadow:1px 1px 5px #9c0b0b;
+  text-shadow: 1px 1px 5px #9c0b0b;
   width: 40%;
- 
 }
-.active-movies :where(p){
+.active-movies :where(p) {
   position: absolute;
-    bottom: 0px;
-    height: 50%;
-    font-size:50%;
+  bottom: 0px;
+  height: 50%;
+  font-size: 50%;
 }
-.active-movies :where(h2){
+.active-movies :where(h2) {
   position: absolute;
-    top: 10%;
-    height: 50%;
-    font-size:100%;
+  top: 10%;
+  height: 50%;
+  font-size: 100%;
 }
-.active-movies img{
+.active-movies img {
   width: 40%;
   height: 100%;
-  margin:0 10px;
-} 
+  margin: 0 10px;
+}
 
 .active-movies:hover #theme-initial {
- transform: scale(1.5);
+  transform: scale(1.5);
 }
-.carosel-films-theme{
+.carosel-films-theme {
   height: 100%;
   width: 100%;
   color: #fff;
   position: relative;
-  margin:5px 0;
+  margin: 5px 0;
   padding: 0 10px;
 }
-.carosel-films-theme h2{
+.carosel-films-theme h2 {
   width: 100%;
   padding-left: 5px;
-  margin:10px 0px;
+  margin: 10px 0px;
   border-radius: 5px;
-  font: 500 1.3em 'Changa';
+  font: 500 1.3em "Changa";
   color: green;
-  background-image: linear-gradient(to right,rgba(255, 255, 255, 0.644),rgba(255, 255, 255, 0.012));
+  background-image: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0.644),
+    rgba(255, 255, 255, 0.012)
+  );
 }
-.carosel-films-theme {
-  
-}
-.page_2 :where(.terror,.action,.lanc){
+
+.page_2 :where(.terror, .action, .lanc) {
   height: 85%;
-  width: max(450px,100%);
+  width: max(450px, 100%);
   display: flex;
   list-style: none;
   gap: 2%;
   overflow: auto;
 }
 
-.page_2 :where(.lanc,.action,.terror) li{
+.page_2 :where(.lanc, .action, .terror) li {
   height: 100%;
   position: relative;
   cursor: pointer;
-  transition: all .2s ease;
+  transition: all 0.2s ease;
   border-radius: 5px;
 }
-.page_2 :where(.lanc,.action,.terror) li:hover{
- transform: scale(1.1);
+.page_2 :where(.lanc, .action, .terror) li:hover {
+  transform: scale(1.1);
 }
-.page_2 :where(.lanc,.action,.terror) li img{
+.page_2 :where(.lanc, .action, .terror) li img {
   height: 90%;
-  width: max(80px,150px);
+  width: max(80px, 150px);
   border-radius: 5px;
   box-shadow: 0px 0px 3px white;
-
 }
-.page_2 :where(.lanc,.action,.terror) li p{
+.page_2 :where(.lanc, .action, .terror) li p {
   position: absolute;
   bottom: 22px;
   left: 10px;

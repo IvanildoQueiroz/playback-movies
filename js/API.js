@@ -13,9 +13,7 @@ function getMoviesApi(mov) {
   const movies = document.querySelector(".list-movies");
 
   function cardsMoviesInitial(mov) {
-    
     for (let i = 0; i <= 2; i++) {
-
       const li = document.createElement("li");
       let title = document.createElement("h2");
       title.innerHTML = mov[i].title;
@@ -55,10 +53,8 @@ function getMoviesApi(mov) {
       li_01.appendChild(img);
       li_01.appendChild(p);
       listAction.appendChild(li_01);
-      
     }
     for (let i = 0; i < mov.length; i++) {
-      
       const li_02 = document.createElement("li");
       let img = document.createElement("img");
       img.setAttribute(
@@ -68,14 +64,11 @@ function getMoviesApi(mov) {
       let p = document.createElement("p");
       p.innerHTML = mov[i].title;
 
-      
       li_02.appendChild(img);
       li_02.appendChild(p);
       listLanc.appendChild(li_02);
-     
     }
     for (let i = 0; i < mov.length; i++) {
-      
       const li_03 = document.createElement("li");
       let img = document.createElement("img");
       img.setAttribute(
@@ -85,10 +78,9 @@ function getMoviesApi(mov) {
       let p = document.createElement("p");
       p.innerHTML = mov[i].title;
 
-      
       li_03.appendChild(img);
       li_03.appendChild(p);
-      listTerror.appendChild(li_03)
+      listTerror.appendChild(li_03);
     }
   }
   getAllMoviesTheme(mov);
