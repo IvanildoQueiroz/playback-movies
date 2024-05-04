@@ -13,7 +13,9 @@ function getMoviesApi(mov) {
   const movies = document.querySelector(".list-movies");
 
   function cardsMoviesInitial(mov) {
+    
     for (let i = 0; i <= 2; i++) {
+
       const li = document.createElement("li");
       let title = document.createElement("h2");
       title.innerHTML = mov[i].title;
@@ -32,7 +34,6 @@ function getMoviesApi(mov) {
       li.appendChild(img);
       li.appendChild(p1);
       li.appendChild(p2);
-      //li.style.backgroundImage = `url(https://image.tmdb.org/t/p/w500/${mov[i].poster_path})`;
       li.classList.add("active-movies");
       movies.appendChild(li);
     }
