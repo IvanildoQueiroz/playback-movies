@@ -7,7 +7,7 @@
   padding: 0;
   box-sizing: border-box;
 }
-body {
+html,body{
   height: 100vh;
   width: 100vw;
   position: relative;
@@ -139,7 +139,7 @@ header {
 }
 .page_1,
 .page_2 {
-  width:max(150px);
+  width: 100vw;
   height: 100%;
   display: flex;
   flex-direction: column;
