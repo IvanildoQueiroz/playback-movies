@@ -1,18 +1,35 @@
-const url =
+const url_movie =
   "https://api.themoviedb.org/3/discover/movie?api_key=a406b143ca1f900e34b5f94b65620223";
-function getApi(url) {
-  fetch(url)
+  const url_series = 
+  "https://api.themoviedb.org/3/discover/tv?api_key=a406b143ca1f900e34b5f94b65620223";
+  let data = []
+function getApi(url_movie,url_series) {
+ 
+  const seriePromise = fetch(url_series)
     .then((res) => res.json())
     .then((data) => {
-      getMoviesApi(data.results);
+      return data.results;
     });
-}
-getApi(url);
+    const moviePromise =  fetch(url_movie)
+    .then((res) => res.json())
+    .then((data) => {
+      return data.results;
+    });
+    Promise.all([moviePromise, seriePromise])
+    .then(([moviesData, seriesData]) => {
+      getMoviesApi(moviesData,seriesData);
+    })
+    .catch((error) => {
+      console.error("Erro ao buscar dados:", error);
+    });
+  }
+ getApi(url_movie,url_series)
 
-function getMoviesApi(mov) {
+
+function getMoviesApi(mov,ser) {
   const movies = document.querySelector(".list-movies");
 
-  function cardsMoviesInitial(mov) {
+  function cardsMoviesInitial(mov,ser) {
     for (let i = 0; i <= 2; i++) {
       const li = document.createElement("li");
       let title = document.createElement("h2");
@@ -73,7 +90,7 @@ function getMoviesApi(mov) {
       let img = document.createElement("img");
       img.setAttribute(
         "src",
-        `https://image.tmdb.org/t/p/w500/${mov[i].poster_path})`
+        `https://image.tmdb.org/t/p/w500/${ser[i].poster_path})`
       );
       let p = document.createElement("p");
       p.innerHTML = mov[i].title;
