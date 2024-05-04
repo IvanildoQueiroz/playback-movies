@@ -254,11 +254,7 @@ header {
   border-radius: 5px;
   font: 500 1.3em "Changa";
   color: green;
-  background-image: linear-gradient(
-    to right,
-    rgba(255, 255, 255, 0.644),
-    rgba(255, 255, 255, 0.012)
-  );
+
 }
 
 .page_2 :where(.terror, .action, .lanc) {
