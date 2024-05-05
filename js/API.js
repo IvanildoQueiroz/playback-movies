@@ -1,35 +1,31 @@
 const url_movie =
   "https://api.themoviedb.org/3/discover/movie?api_key=a406b143ca1f900e34b5f94b65620223";
-  const url_series = 
+const url_series =
   "https://api.themoviedb.org/3/discover/tv?api_key=a406b143ca1f900e34b5f94b65620223";
-  let data = []
-function getApi(url_movie,url_series) {
- 
+const movies = document.querySelector(".list-movies");
+function getApi(url_movie, url_series) {
   const seriePromise = fetch(url_series)
     .then((res) => res.json())
     .then((data) => {
       return data.results;
     });
-    const moviePromise =  fetch(url_movie)
+  const moviePromise = fetch(url_movie)
     .then((res) => res.json())
     .then((data) => {
       return data.results;
     });
-    Promise.all([moviePromise, seriePromise])
+  Promise.all([moviePromise, seriePromise])
     .then(([moviesData, seriesData]) => {
-      getMoviesApi(moviesData,seriesData);
+      getMoviesApi(moviesData, seriesData);
     })
     .catch((error) => {
       console.error("Erro ao buscar dados:", error);
     });
-  }
- getApi(url_movie,url_series)
+}
+getApi(url_movie, url_series);
 
-
-function getMoviesApi(mov,ser) {
-  const movies = document.querySelector(".list-movies");
-
-  function cardsMoviesInitial(mov,ser) {
+function getMoviesApi(mov, ser) {
+  function cardsMoviesInitial(mov, ser) {
     for (let i = 0; i <= 2; i++) {
       const li = document.createElement("li");
       let title = document.createElement("h2");
@@ -51,6 +47,23 @@ function getMoviesApi(mov,ser) {
       li.classList.add("active-movies");
       movies.appendChild(li);
     }
+    function getLists() {
+      const allLits = document.querySelector(".list-movies");
+      const lists = allLits.querySelectorAll("li");
+      let i = 0;
+      setInterval(() => {
+        if (i >= lists.length) {
+          i = 0;
+        }
+        lists[i].scrollIntoView({
+          behavior: "smooth",
+          inline: "center",
+          block: "nearest",
+        });
+        i++;
+      }, 3000);
+    }
+    getLists();
   }
   function getAllMoviesTheme(mov) {
     const listAction = document.querySelector(".action");
