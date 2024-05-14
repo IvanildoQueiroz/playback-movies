@@ -61,7 +61,7 @@ function getMoviesApi(mov, ser) {
           block: "nearest",
         });
         i++;
-      }, 3000);
+      }, 10000);
     }
     getLists();
   }
