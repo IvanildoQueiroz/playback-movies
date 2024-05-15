@@ -7,7 +7,8 @@
   padding: 0;
   box-sizing: border-box;
 }
-html,body{
+html,
+body {
   height: 100vh;
   width: 100%;
   position: relative;
@@ -22,7 +23,6 @@ html,body{
   background-repeat: no-repeat;
   background-attachment: fixed;
   opacity: 0.85;
-  
 }
 header {
   position: absolute;
@@ -132,18 +132,16 @@ header {
   scale: 1;
 }
 .page_1,
-.page_2 {
+.page_2,
+.page_3 {
   width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
   position: relative;
-  left: 0px;
-  right: 0px;
-  
 }
 #findMovie {
-  width: max(250px,40%);
+  width: max(250px, 40%);
   height: 50px;
   margin: 20px auto;
   border-radius: 40px;
@@ -164,8 +162,8 @@ header {
   outline: none;
   caret-color: aqua;
 }
-#findMovie input::placeholder{
-  font-size:max( 15px,1.2vw);
+#findMovie input::placeholder {
+  font-size: max(15px, 1.2vw);
 }
 #findMovie img {
   cursor: pointer;
@@ -187,19 +185,17 @@ header {
   font: normal 200 1.8em "Jersey 20", sans-serif;
   overflow: hidden;
   scroll-snap-type: x mandatory;
-
 }
 .list-movies {
   width: 100%;
-  height: 92%;
-  padding: 0 10px;
+  height: 100%;
+  padding: 5px 10px;
   list-style: none;
   display: flex;
   gap: 20px;
 }
 .active-movies {
   min-width: 100%;
-  
   scroll-snap-align: center;
   scroll-snap-stop: always;
   width: 100%;
@@ -211,7 +207,6 @@ header {
 .active-movies :where(h2, p) {
   position: absolute;
   right: 10%;
-  z-index: 2;
   color: #fff;
   text-shadow: 1px 1px 5px #9c0b0b;
   width: 40%;
@@ -238,30 +233,38 @@ header {
   transform: scale(1.5);
 }
 .carosel-films-theme {
-  height: 100%;
+  height: 30%;
   width: 100%;
   color: #fff;
   position: relative;
   margin: 5px 0;
-  padding: 0 10px;
-
+  padding: 10px 10px;
 }
 .carosel-films-theme h2 {
+  height: 20%;
   width: 100%;
   padding-left: 5px;
   margin: 10px 0px;
   border-radius: 5px;
   font: 500 1.3em "Changa";
   color: green;
-  background-image: linear-gradient(to left, rgba(255, 253, 253, 0.071),rgb(255, 255, 255));
+  background-image: linear-gradient(
+    to left,
+    rgba(255, 253, 253, 0.071),
+    rgb(255, 255, 255)
+  );
 }
 
 .page_2 :where(.terror, .action, .lanc) {
-  height: 85%;
+  padding: 0 10px;
+  position: relative;
+  background-color: #000000;
+  height: 90%;
   display: flex;
   list-style: none;
   gap: 10px;
-  overflow: auto;
+  overflow: hidden;
+
 }
 
 .page_2 :where(.lanc, .action, .terror) li {
@@ -272,17 +275,79 @@ header {
   border-radius: 5px;
 }
 .page_2 :where(.lanc, .action, .terror) li:hover {
-  transform: scale(1.1);
+  transform: scale(1.03);
 }
 .page_2 :where(.lanc, .action, .terror) li img {
-  height: 90%;
+  height: 100%;
   width: max(80px, 150px);
   border-radius: 5px;
   box-shadow: 0px 0px 3px white;
 }
-.page_2 :where(.lanc, .action, .terror) li p {
+/* .page_2 :where(.lanc, .action, .terror) li p {
   position: absolute;
-  bottom: 22px;
-  left: 10px;
-  text-shadow: 0px 0px 5px #fff;
+  top: 22px;
+  left: 5px;
+  box-shadow: 0px 0px 5px #fff;
+} */
+.page_3 {
+  background-image: linear-gradient(to top, black, #000000, #00000000);
+  height: max(450px, 60%);
 }
+#contact {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  gap: 150px;
+  position: relative;
+  padding-top: 50px;
+}
+.infomation-left,
+.infomation-right {
+  padding-top: 80px;
+  height: 100%;
+  width: 420px;
+  color: #fff;
+}
+.page_3 h3 {
+  width: 100%;
+  position: absolute;
+  top: 10px;
+  font: 500 2.3em "Changa";
+  color: #ffffffa1;
+}
+.acess-image img {
+  height: 35px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+.acess-image img:hover {
+  transform: scale(1.2);
+}
+.page_3 address {
+  font: italic 500 1em "Changa";
+}
+#acess-data{
+  height: 100%;
+  list-style: none;
+  float: left;
+  padding: 5px;
+  font-size: 100%;
+}
+#acess-data ul{
+  height: 80px;
+  list-style: none;
+ 
+  padding: 5px;
+  font-size: 100%;
+}
+#acess-data li{
+  float: left;     
+  padding:2px;      
+}
+/* .btn{
+  background-color: #fff;
+  width: 150px;
+  height: 50px;
+  position: absolute;
+
+} */

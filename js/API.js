@@ -63,7 +63,7 @@ function getMoviesApi(mov, ser) {
         i++;
       }, 10000);
     }
-    getLists();
+    //getLists();
   }
   function getAllMoviesTheme(mov) {
     const listAction = document.querySelector(".action");
