@@ -57,11 +57,11 @@ function getMoviesApi(mov, ser) {
         }
         lists[i].scrollIntoView({
           behavior: "smooth",
-          inline: "center",
+          inline: "start",
           block: "nearest",
         });
         i++;
-      }, 10000);
+      }, 1000);
     }
     //getLists();
   }
