@@ -69,6 +69,10 @@ function getMoviesApi(mov, ser) {
     const listAction = document.querySelector(".action");
     const listTerror = document.querySelector(".terror");
     const listLanc = document.querySelector(".lanc");
+    const ArraylistAction = [];
+    const ArraylistTerror = [];
+    const ArraylistLanc = []
+    
 
     for (let i = 0; i < mov.length; i++) {
       const li_01 = document.createElement("li");
@@ -83,6 +87,7 @@ function getMoviesApi(mov, ser) {
       li_01.appendChild(img);
       li_01.appendChild(p);
       listAction.appendChild(li_01);
+      ArraylistAction.push(li_01)
     }
     for (let i = 0; i < mov.length; i++) {
       const li_02 = document.createElement("li");
@@ -97,6 +102,7 @@ function getMoviesApi(mov, ser) {
       li_02.appendChild(img);
       li_02.appendChild(p);
       listLanc.appendChild(li_02);
+      ArraylistLanc.push(li_02)
     }
     for (let i = 0; i < mov.length; i++) {
       const li_03 = document.createElement("li");
@@ -111,8 +117,38 @@ function getMoviesApi(mov, ser) {
       li_03.appendChild(img);
       li_03.appendChild(p);
       listTerror.appendChild(li_03);
+      ArraylistTerror.push(li_03)
     }
+    function activeBtn() {
+      const btn = document.querySelectorAll(".btn");
+      btn.forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+          const left = e.target.classList.contains("left");
+          if (left) {
+            console.log("Botao esquerdo");
+          } else {
+            console.log("Botao direito");
+          }
+        });
+      });
+      ArraylistAction.map(e=>{
+        e.classList.remove('current-item')
+        e.addEventListener('click',()=>{
+          e.scrollIntoView({
+            behavior: "smooth",
+            inline: "center",
+            block: "nearest",
+          });
+          e.classList.remove('current-item')
+          console.log(e)
+          e.classList.add('current-item')
+        })
+      })
+     // console.log(ArraylistAction)
+    }
+    activeBtn();
   }
+  
   getAllMoviesTheme(mov);
   cardsMoviesInitial(mov);
 }
