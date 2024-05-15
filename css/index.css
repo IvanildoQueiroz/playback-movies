@@ -309,6 +309,10 @@ header {
   font: 500 2.3em "Changa";
   color: #ffffffa1;
 }
+.acess-image{
+  width:max(350px,100%);
+  text-align: left;
+}
 .acess-image img {
   height: 50%;
   transition: all 0.2s ease;
@@ -321,11 +325,12 @@ header {
   font: italic 500 1em "Changa";
 }
 #acess-data{
-  height: 100%;
+  margin-top: 50%;
+  height: 50%;
   list-style: none;
   float: left;
   padding: 5px;
-  font-size: 17px;
+  font-size: 70%;
 }
 #acess-data ul{
   height: 80px;
