@@ -119,33 +119,49 @@ function getMoviesApi(mov, ser) {
       listTerror.appendChild(li_03);
       ArraylistTerror.push(li_03)
     }
+
+    
     function activeBtn() {
-      const btn = document.querySelectorAll(".btn");
+      let current_item = 0;
+      const btn = document.querySelectorAll(".btn");   
       btn.forEach((btn) => {
         btn.addEventListener("click", (e) => {
           const left = e.target.classList.contains("left");
           if (left) {
-            console.log("Botao esquerdo");
+            console.log(left)
+            current_item = (current_item > 0) ? current_item - 1 : 0;
           } else {
-            console.log("Botao direito");
+            current_item = (current_item < ArraylistAction.length - 1) ? current_item + 1 : ArraylistAction.length - 1;
           }
+          updateCurrentItem();
         });
       });
-      ArraylistAction.map(e=>{
-        e.classList.remove('current-item')
-        e.addEventListener('click',()=>{
-          e.scrollIntoView({
-            behavior: "smooth",
-            inline: "center",
-            block: "nearest",
-          });
-          e.classList.remove('current-item')
-          console.log(e)
-          e.classList.add('current-item')
-        })
-      })
-     // console.log(ArraylistAction)
+    
+      ArraylistAction.forEach((item, i) => {
+        item.addEventListener('click', () => {
+          current_item = i;
+          updateCurrentItem();
+        });
+      });
+    
+      function updateCurrentItem() {
+        ArraylistAction.forEach((item, index) => {
+          if (index === current_item) {
+            item.classList.add('current-item');
+            item.scrollIntoView({
+              behavior: "smooth",
+              inline: "center",
+              block: "nearest",
+            });
+          } else {
+            item.classList.remove('current-item');
+          }
+        });
+      }
+    
+      updateCurrentItem(); 
     }
+    
     activeBtn();
   }
   

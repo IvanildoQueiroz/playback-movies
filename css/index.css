@@ -231,11 +231,12 @@ header {
   transform: scale(1.5);
 }
 .carosel-films-theme {
-  height: 30%;
+  height: 25%;
   width: 100%;
   color: #fff;
-  margin: 5px 0;
-  padding: 10px 10px;
+  margin: 25px 0;
+  padding: 5px 10px;
+  position: relative;
 }
 .carosel-films-theme h2 {
   height: 20%;
@@ -254,12 +255,12 @@ header {
 
 .page_2 :where(.terror, .action, .lanc) {
   padding: 0 10px;
-  height: 90%;
+  height: 100%;
   display: flex;
   list-style: none;
   gap: 10px;
   overflow: hidden;
-  position: relative;
+
 }
 
 .page_2 :where(.lanc, .action, .terror) li {
@@ -285,13 +286,14 @@ header {
 } */
 .page_3 {
   background-image: linear-gradient(to top, black, #000000, #00000000);
-  height: max(450px, 60%);
+  min-height: max(450px, 70%);
 }
 #contact {
+  width: 100%;
+  height: 100%;
   text-align: center;
   display: flex;
-  justify-content: space-around;
-
+  gap: 10%;
   position: relative;
   padding-top: 50px;
   font-size: 60%;
@@ -299,26 +301,27 @@ header {
 .infomation-left,
 .infomation-right {
   padding-top: 20px;
-  height: max(390px, 100%);
+  height: max(530px, 100%);
   width: max(420px, 100%);
   display: flex;
   flex-direction: column;
-  justify-content: center;
+
   align-items: center;
   color: #fff;
 }
 .page_3 h3 {
   width: 100%;
   position: absolute;
-  top: 10px;
-  font: 500 2.3em "Changa";
+  top: 0px;
+  font: 500 3.3em "Changa";
   color: #ffffffa1;
 }
 .acess-image {
   width: max(350px, 100%);
   text-align: center;
 }
-.info-adress p {
+.info-address p {
+  font-size: 1.2em;
   text-align: center;
   height: 100%;
 }
@@ -330,22 +333,20 @@ header {
 .acess-image img:hover {
   transform: scale(1.2);
 }
-.page_3 address {
-  font: italic 500 1em "Changa";
-}
 #acess-data {
   margin-top: 10%;
   height: 50%;
   list-style: none;
   float: left;
   padding: 5px;
+  font-size: 1.5em;
 }
 #acess-data ul {
   height: 80px;
   list-style: none;
   padding: 5px;
 }
-#acess-data li {
+#acess-data ul li {
   float: left;
   padding: 2px;
 }
@@ -354,6 +355,8 @@ header {
   height: 100%;
   position: absolute;
   cursor: pointer;
+  bottom: 5%;
+  top: 30%;
 }
 .btn img {
   width: 30px;
@@ -363,7 +366,7 @@ header {
   transform: scale(1.3);
 }
 .btn-action-left {
-  left: 0;
+  left: 7px;
   background-color: transparent;
   background-image: linear-gradient(
     to right,
@@ -373,7 +376,7 @@ header {
   );
 }
 .btn-action-right {
-  right: 0;
+  right: 7px;
   background-color: transparent;
   background-image: linear-gradient(
     to right,
