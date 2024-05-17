@@ -71,9 +71,11 @@ function getMoviesApi(mov, ser) {
     const listLanc = document.querySelector(".lanc");
     const ArraylistAction = [];
     const ArraylistTerror = [];
-    const ArraylistLanc = []
-    
+    const ArraylistLanc = [];
+    const allArrays = [ArraylistAction,ArraylistLanc,ArraylistTerror];
 
+    
+    
     for (let i = 0; i < mov.length; i++) {
       const li_01 = document.createElement("li");
       let img = document.createElement("img");
@@ -83,7 +85,7 @@ function getMoviesApi(mov, ser) {
       );
       let p = document.createElement("p");
       p.innerHTML = mov[i].title;
-
+      
       li_01.appendChild(img);
       li_01.appendChild(p);
       listAction.appendChild(li_01);
@@ -119,18 +121,27 @@ function getMoviesApi(mov, ser) {
       listTerror.appendChild(li_03);
       ArraylistTerror.push(li_03)
     }
-
+    
+    allArrays.map((e,i,a)=>{
+     allArrays[i].map(e=>{
+      e.addEventListener('click',()=>{
+        // verificação para o botao console.log(e.parentNode.classList.contains('lanc'))
+        })
+     })
+    })
     
     function activeBtn() {
       let current_item = 0;
       const btn = document.querySelectorAll(".btn");   
       btn.forEach((btn) => {
         btn.addEventListener("click", (e) => {
+         btn_current = (e.target.parentNode).parentNode.classList.value
+          console.log(btn_current)
           const left = e.target.classList.contains("left");
-          if (left) {
+          if (left && btn_current == 'action') {
             console.log(left)
             current_item = (current_item > 0) ? current_item - 1 : 0;
-          } else {
+          } else if(!left && btn_current == 'action'){
             current_item = (current_item < ArraylistAction.length - 1) ? current_item + 1 : ArraylistAction.length - 1;
           }
           updateCurrentItem();
