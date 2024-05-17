@@ -148,6 +148,7 @@ header {
   padding: 10px;
   display: flex;
   justify-content: space-between;
+  z-index: 999;
 }
 #findMovie input {
   width: 100%;
