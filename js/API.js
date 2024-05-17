@@ -168,22 +168,23 @@ function getMoviesApi(mov, ser) {
     
       ArraylistLanc.forEach((item, i) => {
         item.addEventListener('click', () => {
+          showDataMovie()
           console.log(item.parentNode)
-          current_item = i;
+          current_item_lanc = i;
           updateCurrentItem();
         });
       });
       ArraylistTerror.forEach((item, i) => {
         item.addEventListener('click', () => {
           console.log(item.parentNode)
-          current_item = i;
+          current_item_terror = i;
           updateCurrentItem();
         });
       });
       ArraylistAction.forEach((item, i) => {
         item.addEventListener('click', () => {
           console.log(item.parentNode)
-          current_item = i;
+          current_item_action = i;
           updateCurrentItem();
         });
       });
@@ -250,3 +251,20 @@ function actionNavbar() {
   });
 }
 actionNavbar();
+
+function showDataMovie(){
+  console.log('iniciou')
+  const screen = document.querySelector('body');
+  const fullScreen = document.createElement('div');
+  fullScreen.setAttribute('class','full-screen');
+  const btnReturnFullScreen = document.createElement('button');
+  btnReturnFullScreen.setAttribute('id','return-full-screen');
+  btnReturnFullScreen.textContent = 'voltar'
+  fullScreen.appendChild(btnReturnFullScreen);
+  fullScreen.classList.add('active-full-screen');
+  screen.appendChild(fullScreen)
+  console.log('encerrou')
+  btnReturnFullScreen.addEventListener('click',()=>{
+    fullScreen.classList.remove('active-full-screen');
+  })
+}
