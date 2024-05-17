@@ -27,6 +27,8 @@ header {
   position: absolute;
   width: 300px;
   height: 100vh;
+  transform:scale(0);
+  z-index: 999;
 }
 #menuNavbar {
   position: absolute;
@@ -35,7 +37,6 @@ header {
   scale: 1;
   width: 30px;
   cursor: pointer;
-  z-index: 88;
 }
 #iconClose {
   position: absolute;
@@ -100,15 +101,14 @@ header {
   opacity: 1;
 }
 .navbar {
-  scale: 0;
+  scale: 1;
   height: 100%;
   width: 250px;
   margin-right: 40px;
-  position: fixed;
+  position: absolute;
   font-family: "Jersey 20", sans-serif;
   color: white;
   text-align: center;
-  z-index: 999;
   background-color: #277e7ee5;
 }
 .logout {
@@ -128,7 +128,7 @@ header {
   width: 40px;
 }
 .active-navbar {
-  scale: 1;
+  transform:scale(1);
 }
 .page_1,
 .page_2,
@@ -148,7 +148,6 @@ header {
   padding: 10px;
   display: flex;
   justify-content: space-between;
-  z-index: 999;
 }
 #findMovie input {
   width: 100%;
@@ -187,12 +186,13 @@ header {
 }
 .list-movies {
   width: 100%;
-  height: 100%;
+  height: 80%;
   padding: 5px 10px;
   list-style: none;
   display: flex;
   gap: 20px;
   position: relative;
+  background-image:linear-gradient(to left,black,rgba(0, 0, 0, 0.473),rgba(0, 0, 0, 0));
 }
 .active-movies {
   min-width: 100%;
@@ -302,18 +302,17 @@ header {
 .infomation-left,
 .infomation-right {
   padding-top: 20px;
-  height: max(530px, 100%);
+  height: max(130px, 50%);
   width: max(420px, 100%);
   display: flex;
   flex-direction: column;
-
   align-items: center;
   color: #fff;
 }
 .page_3 h3 {
   width: 100%;
   position: absolute;
-  top: 0px;
+  top: 20px;
   font: 500 3.3em "Changa";
   color: #ffffffa1;
 }

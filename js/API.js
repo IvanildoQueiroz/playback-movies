@@ -238,7 +238,7 @@ function getMoviesApi(mov, ser) {
 }
 
 function actionNavbar() {
-  const navBar = document.querySelector(".navbar");
+  const navBar = document.querySelector("header");
   const btnClose = document.querySelector("#iconClose");
   const butnOpen = document.querySelector("#menuNavbar");
 
