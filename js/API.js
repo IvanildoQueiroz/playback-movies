@@ -262,9 +262,20 @@ function showDataMovie(){
   btnReturnFullScreen.textContent = 'voltar'
   fullScreen.appendChild(btnReturnFullScreen);
   fullScreen.classList.add('active-full-screen');
-  screen.appendChild(fullScreen)
-  console.log('encerrou')
+  screen.appendChild(fullScreen);
+  console.log('encerrou');
+
   btnReturnFullScreen.addEventListener('click',()=>{
     fullScreen.classList.remove('active-full-screen');
+    fullScreen.remove();
   })
+}
+
+function interfaceShowMovies(){
+  const informationLeft = document.createElement('div');
+  const informationRight = document.createElement('div');
+  const informationCenterTitle = document.createElement('h2');
+  const informationCenterDescription = document.createElement('p');
+  const informationCenterPoster = document.createElement('img');
+  
 }
