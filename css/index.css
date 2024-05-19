@@ -246,7 +246,7 @@ header {
   padding-left: 5px;
   margin: 10px 0px;
   border-radius: 5px;
-  font: 500 1.3em "Changa";
+  font: 500 1.1em "Changa";
   color: green;
   background-image: linear-gradient(
     to left,
@@ -396,7 +396,7 @@ header {
 #full-screen{
   position: absolute;
   top: 10px;
-  width: 50vw;
+  width: 100vw;
   height: 100vh;
   background-color: #000000;
   transform: scale(0);
@@ -408,9 +408,9 @@ header {
 }
 .active-full-screen{
   position: absolute;
-  min-width: 100%;
-  min-height: 100%;
-  background-color: #000000;
+  min-width: max(100%);
+  min-height: max(527px,100%);
+  background-color: #000000de;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -418,35 +418,37 @@ header {
  transform: scale(1);
 }
 #return-full-screen{
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   background-color:green;
-  color: #000000;
-  background-color: rgb(5, 235, 185);
+  color: #f0eaea;
+  background-color: rgb(146, 16, 16);
   cursor: pointer;
   position: absolute;
-  right: 23px;
-  top: 40px;
+  right: 3px;
+  top: 3px;
+  font-size: 17px;
 }
 #data-movies{
+  position: relative;
   padding-top: 50px;
-  width: 90%;
+  width:max(420px,550px);
   height: 90vh;
+  border-radius: 20px;
   display: flex;
   justify-content: space-around;
   gap: 5px;
   color: #fff;
   background-color: #46434386;
 }
-.information-left{
-  min-width: 50%;
-  padding: 5px;  
-}
-.information-left img{
+.information-left,.information-right,.information-left img{
   width: max(170px,100%);
   height: max(270px,70%);
-  
 }
+.information-left{
+  min-width: 50%;
+}
+
 .information-right{
   display: flex;
   justify-content: space-around;
@@ -469,6 +471,7 @@ header {
   content: "trailer";
   cursor: pointer;
   border-radius: 5px;
+  margin-top: 10px;
 }
 .information-right p{
   width: 100%;
@@ -476,4 +479,12 @@ header {
   color: white;
   text-indent: 20px;
   font-size: clamp(12px,1vw,17px);
+}
+#video{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 150px;
+  height: 150px;
+  background-color: #9c0b0b;
 }
