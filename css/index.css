@@ -432,7 +432,7 @@ header {
 #data-movies{
   position: relative;
   padding-top: 50px;
-  width:max(420px,550px);
+  width:max(320px,550px);
   height: 90vh;
   border-radius: 20px;
   display: flex;
