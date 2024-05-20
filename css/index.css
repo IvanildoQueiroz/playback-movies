@@ -441,11 +441,6 @@ header {
 #data-movies{
   position: relative;
   padding-top: 50px;
-<<<<<<< HEAD
-=======
-  width:max(320px,550px);
-  height: 90vh;
->>>>>>> 0fafa2e1cfb34699593486851d14ad6e351e6ecd
   border-radius: 20px;
   display: flex;
   justify-content: space-around;
@@ -501,7 +496,6 @@ header {
   padding: 10px;
 }
 #video{
-<<<<<<< HEAD
   min-width:max(100%);
   height:40%;
   background-color: #2e2d2d;
@@ -509,12 +503,3 @@ header {
   margin: 0 auto;
   border-radius: 10px;
 }
-=======
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 150px;
-  height: 150px;
-  background-color: #9c0b0b;
-}
->>>>>>> 0fafa2e1cfb34699593486851d14ad6e351e6ecd
