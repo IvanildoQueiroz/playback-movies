@@ -1,17 +1,16 @@
+
 const url_movie =
   "https://api.themoviedb.org/3/discover/movie?api_key=a406b143ca1f900e34b5f94b65620223";
 const url_series =
   "https://api.themoviedb.org/3/discover/tv?api_key=a406b143ca1f900e34b5f94b65620223";
 const url_upcoming =
   "https://api.themoviedb.org/3/movie/upcoming?api_key=a406b143ca1f900e34b5f94b65620223";
-const url_Videos =
-  "https://api.themoviedb.org/3/movie/{movie_id}/videos?api_key=a406b143ca1f900e34b5f94b65620223";
 
 const movies = document.querySelector(".list-movies");
 //const series = document.querySelector(".list-series");
 //const search = document.querySelector(".search");
 
-function getApi(url_movie, url_series, url_upcoming, url_Videos) {
+function getApi(url_movie, url_series, url_upcoming) {
   const seriePromise = fetch(url_series)
     .then((res) => res.json())
     .then((data) => {
@@ -27,23 +26,23 @@ function getApi(url_movie, url_series, url_upcoming, url_Videos) {
     .then((data) => {
       return data.results;
     });
-  const allVideos = fetch(url_Videos)
-    .then((res) => res.json())
-    .then((data) => {
-      return data.results;
-    });
+  // const allVideos = fetch(url_Videos)
+  //   .then((res) => res.json())
+  //   .then((data) => {
+  //     return data.results;
+  //   });
 
-  Promise.all([moviePromise, seriePromise, movieUpcomming, allVideos])
-    .then(([moviesData, seriesData, movieUpcomming, allVideos]) => {
-      getMoviesApi(moviesData, seriesData, movieUpcomming, allVideos);
+  Promise.all([moviePromise, seriePromise, movieUpcomming])
+    .then(([moviesData, seriesData, movieUpcomming]) => {
+      getMoviesApi(moviesData, seriesData, movieUpcomming);
     })
     .catch((error) => {
       console.error("Erro ao buscar dados:", error);
     });
 }
-getApi(url_movie, url_series, url_upcoming, url_Videos);
+getApi(url_movie, url_series, url_upcoming);
 
-function getMoviesApi(mov, ser, up, vid) {
+function getMoviesApi(mov, ser, up) {
   function cardsMoviesInitial(mov, ser) {
     for (let i = 0; i <= 2; i++) {
       const li = document.createElement("li");
@@ -87,7 +86,8 @@ function getMoviesApi(mov, ser, up, vid) {
     //getLists();
   }
 
-  function getAllMoviesTheme(mov, ser, up, vid) {
+  function getAllMoviesTheme(mov, ser, up) {
+    //console.log(vid)
     const listAction = document.querySelector(".action");
     const listTerror = document.querySelector(".terror");
     const listLanc = document.querySelector(".lanc");
@@ -250,7 +250,7 @@ function getMoviesApi(mov, ser, up, vid) {
     activeBtn();
   }
 
-  getAllMoviesTheme(mov, ser, up, vid);
+  getAllMoviesTheme(mov, ser, up);
   cardsMoviesInitial(mov);
 }
 
@@ -269,7 +269,9 @@ function actionNavbar() {
 actionNavbar();
 
 function showDataMovie(movie) {
-  console.log(movie);
+
+ keyVideo = movie.id;
+
   const screen = document.querySelector("body");
   const fullScreen = document.createElement("div");
   fullScreen.setAttribute("class", "full-screen");
@@ -281,11 +283,11 @@ function showDataMovie(movie) {
   );
   const text = document.createElement("p");
   text.innerHTML = `${movie.overview}`;
-  console.log(movie.overview);
+
   const title = document.createElement("h1");
   title.textContent = movie.title ? movie.title : movie.name;
 
-  fullScreen.appendChild(interfaceShowMovies(image, title, text, fullScreen));
+  fullScreen.appendChild(interfaceShowMovies(image, title, text, fullScreen,keyVideo));
 
   fullScreen.classList.add("active-full-screen");
   screen.appendChild(fullScreen).scrollIntoView({
@@ -294,47 +296,68 @@ function showDataMovie(movie) {
   });
 }
 
-function interfaceShowMovies(image, data_title, content, fullScreen) {
+function interfaceShowMovies(image, data_title, content, fullScreen,keyVideo) {
+
+  const allDataMovies = document.createElement('div');
+  allDataMovies.setAttribute('class','all-data-movies');
+
+  const title_trailer = document.createElement('h2');
+  title_trailer.innerHTML = "Trailer"
+
   const dataMovies = document.createElement("div");
   dataMovies.setAttribute("id", "data-movies");
-
+  
   const informationLeft = document.createElement("div");
   informationLeft.setAttribute("class", "information-left");
   informationLeft.appendChild(image);
 
   const informationRight = document.createElement("div");
   informationRight.setAttribute("class", "information-right");
-
+  
   const button_watch = document.createElement("button");
   button_watch.textContent = "assistir";
-
+  
   const button_close = document.createElement("button");
   button_close.setAttribute("id", "return-full-screen");
   button_close.textContent = "X";
 
-  // const video = document.createElement('video');
-  // video.setAttribute('id','video');
-  // video.setAttribute('src','https://www.youtube.com/watch?v=uJL40wlqbGI');
-
+  
   informationRight.appendChild(data_title);
   informationRight.appendChild(content);
-
+  
   informationRight.appendChild(button_watch);
   informationRight.appendChild(button_close);
-
+  
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") fullScreen.remove();
   });
-
+  
   button_close.addEventListener("click", () => {
     fullScreen.classList.remove("active-full-screen");
     fullScreen.remove();
   });
-
+  
   //button.addEventListener()
   dataMovies.appendChild(informationLeft);
   dataMovies.appendChild(informationRight);
-  //dataMovies.appendChild(video)
+  allDataMovies.appendChild(dataMovies);
+  allDataMovies.appendChild(title_trailer);
 
-  return dataMovies;
+  const url_Videos =
+ `https://api.themoviedb.org/3/movie/${keyVideo}/videos?api_key=a406b143ca1f900e34b5f94b65620223`;
+ 
+ fetch(url_Videos)
+ .then(res=> res.json())
+ .then(data =>{return allDataMovies.appendChild(getVideoTrailer(data))} )
+
+  return allDataMovies;
+}
+
+function getVideoTrailer(movie){
+ const video = document.createElement('iframe');
+ video.setAttribute('id','video');
+ video.setAttribute('constrols','true')
+ console.log(movie.results[0].key)
+ video.setAttribute('src',`https://www.youtube.com/embed/${movie.results[0].key}?autoplay=1&mute=0`);
+ return video;
 }

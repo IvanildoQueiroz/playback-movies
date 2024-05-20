@@ -429,21 +429,30 @@ header {
   top: 3px;
   font-size: 17px;
 }
+.all-data-movies{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width:max(320px,85%);
+  height: 200vh;
+  color: #fff;
+  background-color: #46434386;
+}
 #data-movies{
   position: relative;
   padding-top: 50px;
-  width:max(420px,550px);
-  height: 90vh;
   border-radius: 20px;
   display: flex;
   justify-content: space-around;
   gap: 5px;
   color: #fff;
-  background-color: #46434386;
 }
 .information-left,.information-right,.information-left img{
   width: max(170px,100%);
   height: max(270px,70%);
+}
+.information-left img{
+  width: max(170px,70%);
 }
 .information-left{
   min-width: 50%;
@@ -480,11 +489,17 @@ header {
   text-indent: 20px;
   font-size: clamp(12px,1vw,17px);
 }
+.all-data-movies h2{
+  font-size: 3em;
+  border: 2px solid white;
+  border-radius: 5px;
+  padding: 10px;
+}
 #video{
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 150px;
-  height: 150px;
-  background-color: #9c0b0b;
+  min-width:max(100%);
+  height:40%;
+  background-color: #2e2d2d;
+  width:clamp(320px,50%,750px);
+  margin: 0 auto;
+  border-radius: 10px;
 }
