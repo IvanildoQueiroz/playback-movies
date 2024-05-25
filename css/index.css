@@ -8,7 +8,8 @@
   box-sizing: border-box;
 }
 
-html,body {
+html,
+body {
   height: 100vh;
   width: 100%;
   background-color: rgb(21, 115, 85);
@@ -28,7 +29,7 @@ header {
   position: absolute;
   width: 300px;
   height: 100vh;
-  transform:scale(0);
+  transform: scale(0);
   z-index: 999;
 }
 #menuNavbar {
@@ -129,7 +130,11 @@ header {
   width: 40px;
 }
 .active-navbar {
-  transform:scale(1);
+  transform: scale(1);
+}
+.page_1{
+  display: flex;
+  align-items: center;
 }
 .page_1,
 .page_2,
@@ -140,6 +145,7 @@ header {
   flex-direction: column;
 }
 #findMovie {
+  position: relative;
   width: max(250px, 40%);
   height: 50px;
   margin: 20px auto;
@@ -174,11 +180,13 @@ header {
   font: 300 4em "Changa", sans-serif;
   background-color: #ffffff38;
   text-align: center;
+  width: 100%;
   height: 15%;
 }
 #carosel-movies {
-  width: 100%;
-  height: calc(100% - 70px);
+  margin-top: 40px auto;
+  width:clamp(320px,100%,1000px);
+  height: calc(80%);
   text-align: center;
   color: #fff;
   font: normal 200 1.8em "Jersey 20", sans-serif;
@@ -186,52 +194,80 @@ header {
   scroll-snap-type: x mandatory;
 }
 .list-movies {
-  width: 100%;
-  height: 80%;
-  padding: 5px 10px;
+  transition:all 1.5s ease-out;
+  width: 330%;
+  height: 90%;
   list-style: none;
   display: flex;
-  gap: 20px;
+  gap: 5%;
   position: relative;
-  background-image:linear-gradient(to left,black,rgba(0, 0, 0, 0.473),rgba(0, 0, 0, 0));
 }
 .active-movies {
-  min-width: 100%;
-  scroll-snap-align: center;
-  scroll-snap-stop: always;
   width: 100%;
+  height: 90%;
   display: flex;
-  padding-left: 20px;
-  position: relative;
+  justify-content: space-around;
+  gap: 10%;
+  padding: 10px;
+  cursor: pointer;
+  background-image: linear-gradient(to left,#000000,#000,#0000000c);
+}
+.active-movies:nth-child(1) div {
+  text-align: center;
 }
 .active-movies :where(h2, p) {
-  position: absolute;
-  right: 10%;
+  height: 80%;
+  padding-top: 5px;
   color: #fff;
   text-shadow: 1px 1px 5px #9c0b0b;
-  width: 40%;
+  width: 90%;
 }
 .active-movies :where(p) {
-  position: absolute;
-  bottom: 0px;
   height: 50%;
-  font-size: 50%;
+  font-size: 1.5vw;
 }
 .active-movies :where(h2) {
-  position: absolute;
-  top: 10%;
+  text-align: center;
   height: 50%;
-  font-size: 100%;
+  font-size: 4vw;
 }
 .active-movies img {
-  width: 40%;
+  width: 50%;
   height: 100%;
-  margin: 0 10px;
+}
+#btn_1:checked ~ .list-movies{
+  margin-left: -0%;
+}
+#btn_2:checked ~ .list-movies {
+  margin-left: -115%;
+}
+#btn_3:checked ~ .list-movies {
+  margin-left: -230%;
+}
+#btn_1:checked ~ .btn_all_div > #btn-label_1,#btn_2:checked ~ .btn_all_div > #btn-label_2,#btn_3:checked ~ .btn_all_div > #btn-label_3{
+  background-color: #fff;
+}
+.btn-radio {
+  display: none;
+}
+.btn_all_div{
+  position: absolute;
+  bottom: 25px;
+  left: 42%;
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+}
+#btn-label_1,#btn-label_2,#btn-label_3{
+  min-width: 10px;
+  min-height: 10px;
+  border-radius: 50%;
+  border:1px solid rgb(243, 243, 245);
+  padding: 5px;
+  border: 2px solid;
+  cursor: pointer;
 }
 
-.active-movies:hover #theme-initial {
-  transform: scale(1.5);
-}
 .carosel-films-theme {
   height: 25%;
   width: 100%;
@@ -262,7 +298,6 @@ header {
   list-style: none;
   gap: 10px;
   overflow: hidden;
-
 }
 
 .page_2 :where(.lanc, .action, .terror) li {
@@ -324,7 +359,7 @@ header {
 .info-address p {
   font-size: 1.2em;
   text-align: center;
-  height:50%;
+  height: 50%;
 }
 .acess-image img {
   height: 50%;
@@ -340,7 +375,7 @@ header {
   height: 100%;
   list-style: none;
   padding: 5px;
-  font-size: clamp(1em,1vw,1rem);
+  font-size: clamp(1em, 1vw, 1rem);
 }
 #acess-data ul {
   height: 80px;
@@ -393,7 +428,7 @@ header {
 .current-item {
   border: 3px solid white;
 }
-#full-screen{
+#full-screen {
   position: absolute;
   top: 10px;
   width: 100vw;
@@ -406,21 +441,21 @@ header {
   align-items: center;
   padding: 20px;
 }
-.active-full-screen{
+.active-full-screen {
   position: absolute;
   min-width: max(100%);
-  min-height: max(527px,100%);
+  min-height: max(527px, 100%);
   background-color: #000000de;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
- transform: scale(1);
+  transform: scale(1);
 }
-#return-full-screen{
+#return-full-screen {
   width: 40px;
   height: 40px;
-  background-color:green;
+  background-color: green;
   color: #f0eaea;
   background-color: rgb(146, 16, 16);
   cursor: pointer;
@@ -429,16 +464,16 @@ header {
   top: 3px;
   font-size: 17px;
 }
-.all-data-movies{
+.all-data-movies {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  width:max(320px,85%);
+  width: max(320px, 85%);
   height: 200vh;
   color: #fff;
   background-color: #46434386;
 }
-#data-movies{
+#data-movies {
   position: relative;
   padding-top: 50px;
   border-radius: 20px;
@@ -447,31 +482,33 @@ header {
   gap: 5px;
   color: #fff;
 }
-.information-left,.information-right,.information-left img{
-  width: max(170px,100%);
-  height: max(270px,70%);
+.information-left,
+.information-right,
+.information-left img {
+  width: max(170px, 100%);
+  height: max(270px, 70%);
 }
-.information-left img{
-  width: max(170px,70%);
+.information-left img {
+  width: max(170px, 70%);
 }
-.information-left{
+.information-left {
   min-width: 50%;
 }
 
-.information-right{
+.information-right {
   display: flex;
   justify-content: space-around;
   align-items: center;
   width: 50%;
   padding: 10px;
-  width:max(150px,100%);
+  width: max(150px, 100%);
   display: flex;
   flex-direction: column;
 }
-.information-right h1{
-  font-size:clamp(17px,100%);
+.information-right h1 {
+  font-size: clamp(17px, 100%);
 }
-.information-right button{
+.information-right button {
   width: 80%;
   height: 30px;
   background-color: #9c0b0b;
@@ -482,24 +519,40 @@ header {
   border-radius: 5px;
   margin-top: 10px;
 }
-.information-right p{
+.information-right p {
   width: 100%;
   height: 270px;
   color: white;
   text-indent: 20px;
-  font-size: clamp(12px,1vw,17px);
+  font-size: clamp(12px, 1vw, 17px);
 }
-.all-data-movies h2{
-  font-size: 3em;
+.all-data-movies h2 {
+  font-size: 5vw;
   border: 2px solid white;
   border-radius: 5px;
   padding: 10px;
 }
-#video{
-  min-width:max(100%);
-  height:40%;
+#video {
+  height: 30%;
   background-color: #2e2d2d;
-  width:clamp(320px,50%,750px);
+  width: clamp(320px, 100%, 650px);
   margin: 0 auto;
   border-radius: 10px;
+}
+#findMovieResult{
+  position: absolute;
+  z-index: 10;
+  top: 110%;
+  left: -13%;
+  background-color: #000;
+  min-width:clamp(320px,100%,650px);
+  width: 150px;
+  height: 70px;
+  text-align: center;
+  color: gray;
+  border-top: 2px solid gray;
+  border-radius: 0px 0px 10px 10px;
+  font-size: 4vw;
+  outline: 2px solid white;
+  padding-top: 5px;
 }

@@ -56,17 +56,31 @@
         <img src="assets/menu_icon.png" alt="menu" id="menuNavbar" class="">
         <h1>Vant</h1>
         <div id="findMovie">
-          <input type="text" placeholder="Find yours movies" /><img
-            src="assets/find_icon.png" alt=""/>
+          <input type="text" placeholder="Find yours movies" id="inputDataImage"/><img
+            src="assets/find_icon.png" alt="image find" id="find-image"/>
         </div>
         <article id="carosel-movies">
+          <input type="radio" name="btn-radio" id="btn_1"  class="btn-radio">
+          <input type="radio" name="btn-radio" id="btn_2" class="btn-radio">
+          <input type="radio" name="btn-radio" id="btn_3" class="btn-radio">
+          
+          <div class="btn_all_div">
+            <label for="btn_1" id="btn-label_1" class="label-btn"></label>
+            <label for="btn_2" id="btn-label_2" class="label-btn"></label>
+            <label for="btn_3" id="btn-label_3" class="label-btn"></label>
+          </div>
           <ul class="list-movies">
           </ul>
+          <!-- <div class="btn_all_div">
+            <label for="btn_1" id="btn-label_1" class="label-btn"></label>
+            <label for="btn_2" id="btn-label_2" class="label-btn"></label>
+            <label for="btn_3" id="btn-label_3" class="label-btn"></label>
+          </div> -->
         </article>
       </section>
       <section class="page_2">
         <article class="carosel-films-theme">
-          <h2>Lançamentos</h2>
+          <h2>Mais votados</h2>
           <ul class="lanc">
             <button class=" btn btn-action-left"><img src="assets/icon-left.png" alt="" class="left"></button>
             <button class=" btn btn-action-right"><img src="assets/icon-right.png" alt=""></button>

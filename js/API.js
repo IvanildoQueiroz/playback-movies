@@ -4,7 +4,7 @@ const url_movie =
 const url_series =
   "https://api.themoviedb.org/3/discover/tv?api_key=a406b143ca1f900e34b5f94b65620223";
 const url_upcoming =
-  "https://api.themoviedb.org/3/movie/upcoming?api_key=a406b143ca1f900e34b5f94b65620223";
+  "https://api.themoviedb.org/3/movie/top_rated?api_key=a406b143ca1f900e34b5f94b65620223";
 
 const movies = document.querySelector(".list-movies");
 //const series = document.querySelector(".list-series");
@@ -26,11 +26,6 @@ function getApi(url_movie, url_series, url_upcoming) {
     .then((data) => {
       return data.results;
     });
-  // const allVideos = fetch(url_Videos)
-  //   .then((res) => res.json())
-  //   .then((data) => {
-  //     return data.results;
-  //   });
 
   Promise.all([moviePromise, seriePromise, movieUpcomming])
     .then(([moviesData, seriesData, movieUpcomming]) => {
@@ -43,6 +38,7 @@ function getApi(url_movie, url_series, url_upcoming) {
 getApi(url_movie, url_series, url_upcoming);
 
 function getMoviesApi(mov, ser, up) {
+  console.log(mov)
   function cardsMoviesInitial(mov, ser) {
     for (let i = 0; i <= 2; i++) {
       const li = document.createElement("li");
@@ -51,7 +47,7 @@ function getMoviesApi(mov, ser, up) {
       let img = document.createElement("img");
       img.setAttribute(
         "src",
-        `https://image.tmdb.org/t/p/w500/${mov[i].poster_path})`
+        `https://image.tmdb.org/t/p/w500/${mov[i].poster_path}`
       );
       let p1 = document.createElement("p");
 
@@ -61,31 +57,32 @@ function getMoviesApi(mov, ser, up) {
 
       let p2 = document.createElement("p");
       p2.innerHTML = mov[i].overview;
-      li.appendChild(title);
+      let dataForDescription = document.createElement('div');
+      dataForDescription.appendChild(title);
+      dataForDescription.appendChild(p2);
+      
       li.appendChild(img);
-      li.appendChild(p2);
+      li.appendChild(dataForDescription);
       li.classList.add("active-movies");
       movies.appendChild(li);
     }
-    // function getLists() {
-    //   const allLits = document.querySelector(".list-movies");
-    //   const lists = allLits.querySelectorAll("li");
-    //   let i = 0;
-    //   setInterval(() => {
-    //     if (i >= lists.length) {
-    //       i = 0;
-    //     }
-    //     lists[i].scrollIntoView({
-    //       behavior: "smooth",
-    //       inline: "start",
-    //       block: "nearest",
-    //     });
-    //     i++;
-    //   }, 1000);
-    // }
-    //getLists();
-  }
+    function getLists() {
+      let count = 1;
+      let previousCount = 1
+      document.querySelector('#btn_1').setAttribute('checked', 'true');
 
+     setInterval(()=>{
+
+       previousCount = count;
+       document.querySelector('#btn_'+previousCount).removeAttribute('checked', 'true');
+       count > 2 ?count = 1:count++;
+      document.querySelector('#btn_'+count).setAttribute('checked', 'true');
+      }, 5000);
+    }
+
+    getLists();
+  }
+  
   function getAllMoviesTheme(mov, ser, up) {
     //console.log(vid)
     const listAction = document.querySelector(".action");
@@ -113,14 +110,6 @@ function getMoviesApi(mov, ser, up) {
       ArraylistTerror.push([movie, allData]);
       listTerror.appendChild(ArraylistTerror[i][0]);
     }
-
-    // allArrays.map((e,i,a)=>{
-    //  allArrays[i].map(e=>{
-    //   e.addEventListener('click',()=>{
-    //     // verificação para o botao console.log(e.parentNode.classList.contains('lanc'))
-    //     })
-    //  })
-    // });
 
     function createElementsList(data) {
       const li = document.createElement("li");
@@ -183,7 +172,6 @@ function getMoviesApi(mov, ser, up) {
       });
 
       ArraylistLanc.forEach((item, i) => {
-        console.log(item);
         item[0].addEventListener("click", () => {
           showDataMovie(item[1]);
           current_item_lanc = i;
@@ -357,7 +345,39 @@ function getVideoTrailer(movie){
  const video = document.createElement('iframe');
  video.setAttribute('id','video');
  video.setAttribute('constrols','true')
- console.log(movie.results[0].key)
  video.setAttribute('src',`https://www.youtube.com/embed/${movie.results[0].key}?autoplay=1&mute=0`);
  return video;
 }
+function findInterface(request){
+  const findMovie = document.querySelector('#findMovie');
+  const findMovieResult = document.createElement('div');
+  const p = document.createElement('p')
+  findMovieResult.setAttribute('id','findMovieResult');
+
+  if(request){
+    p.textContent = 'Movie not found'
+    findMovieResult.appendChild(p);
+  }
+  findMovie.appendChild(findMovieResult);
+
+  document.addEventListener('click',e=>{
+    e.preventDefault()
+    const el = e.target;
+    console.log(el.id)
+    if(el.id != "find-image"){
+      findMovieResult.remove()
+    }
+  })
+}
+
+function findMovies(result){
+  const findImage = document.querySelector('#find-image');
+  //const findText = document.querySelector('#find-text');
+  
+  findImage.addEventListener('click',e=>{
+    e.preventDefault();
+    if(result) findInterface(result);
+  })
+  
+}
+findMovies(123)
