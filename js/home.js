@@ -425,3 +425,31 @@ function findMovies(mov, result) {
     result = ""
   });
 }
+
+function addDataUserlogin(){
+  const userLogin = document.querySelector("#nameUser");
+  const user =  sessionStorage.getItem('user');
+  if(user){
+    userLogin.innerHTML = user;
+
+    if(user==='admin'){
+      document.querySelector('#photo').style.backgroundImage = "url('../assets/imgAdmin.jpg')";
+      //document.querySelector('#photo').style.backgroundColor = "red";
+    }
+
+  }else{
+    userLogin.innerHTML = "Guest";
+  }
+  
+
+}
+addDataUserlogin()
+
+const logout = document.querySelector('.logout');
+
+logout.addEventListener('click', () => {
+  sessionStorage.removeItem('user');
+  localStorage.removeItem('dataUser')
+  window.location.reload();
+  location.href = '/index.html'
+})
