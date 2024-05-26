@@ -63,6 +63,10 @@ function getMoviesApi(mov, ser, up) {
       li.appendChild(dataForDescription);
       li.classList.add("active-movies");
       movies.appendChild(li);
+      li.addEventListener('click',()=>{
+        showDataMovie(mov[i])
+      })
+      
     }
     function getLists() {
       let count = 1;
@@ -355,11 +359,14 @@ function getVideoTrailer(movie) {
   );
   return video;
 }
+
+const findMovieResult = document.createElement("div");
+findMovieResult.setAttribute("id", "findMovieResult");
+
 function findInterface(request) {
-  const findMovieResult = document.createElement("div");
-  findMovieResult.setAttribute("id", "findMovieResult");
   const findMovie = document.querySelector("#findMovie");
   findMovie.focus();
+  findMovieResult.innerHTML = '';
 
   if (request.length === 0) {
     const p = document.createElement("p");
@@ -368,45 +375,47 @@ function findInterface(request) {
     findMovie.appendChild(findMovieResult);
     return;
   }
-
+  
   request.forEach((e) => {
     const img = document.createElement("img");
     img.setAttribute("src", `https://image.tmdb.org/t/p/w500/${e.poster_path}`);
     const title = document.createElement("h2");
     title.textContent = e.title;
-
+    
     const button = document.createElement("button");
     button.textContent = "Ver";
-
+    button.addEventListener('click',()=>{
+      showDataMovie(e)
+    })
+    
     const p = document.createElement("p");
     p.textContent = e.overview;
-
+    
     const description = document.createElement("div");
     description.setAttribute("id", "description");
-
+    
     const descriptionCompleted = document.createElement("div");
     descriptionCompleted.setAttribute("id", "descriptionCompleted");
 
     description.appendChild(title);
     description.appendChild(p);
     description.appendChild(button);
-
+    
     descriptionCompleted.appendChild(img);
     descriptionCompleted.appendChild(description);
-
+    
     findMovieResult.appendChild(descriptionCompleted);
   });
 
   findMovie.appendChild(findMovieResult);
 
-  document.addEventListener("click", (e) => {
-    const el = e.target;
-    //console.log(el.id)
-    if (el.id != "find-image") {
-      findMovieResult.remove();
-    }
-  });
 }
+document.addEventListener("click", (e) => {
+  const el = e.target;
+  if (el.id != "find-image") {
+    findMovieResult.remove();
+  }
+});
 
 function findMovies(mov, result) {
   let resultOfFind = [];
@@ -418,12 +427,13 @@ function findMovies(mov, result) {
   const findImage = document.querySelector("#find-image");
   //const findText = document.querySelector('#find-text');
 
-  findImage.addEventListener("click", (e) => {
-    e.preventDefault();
-    console.log(result);
-    if (result != "") findInterface(resultOfFind);
-    result = ""
+  findImage.addEventListener("click", () => {
+    if (result != ""){ 
+      findInterface(resultOfFind);
+      result = "";
+    };
   });
+  
 }
 
 function addDataUserlogin(){
