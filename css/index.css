@@ -297,7 +297,8 @@ header {
   display: flex;
   list-style: none;
   gap: 10px;
-  overflow: hidden;
+  overflow: scroll;
+  scrollbar-width: none;
 }
 
 .page_2 :where(.lanc, .action, .terror) li {
@@ -540,19 +541,61 @@ header {
   border-radius: 10px;
 }
 #findMovieResult{
+  height: clamp(450px,4vh,650px);
   position: absolute;
   z-index: 10;
   top: 110%;
-  left: -13%;
+  left: 50%;
   background-color: #000;
   min-width:clamp(320px,100%,650px);
-  width: 150px;
-  height: 70px;
+  transform: translate(-50%);
   text-align: center;
   color: gray;
   border-top: 2px solid gray;
   border-radius: 0px 0px 10px 10px;
   font-size: 4vw;
   outline: 2px solid white;
-  padding-top: 5px;
+  padding: 5px;
+  overflow-y:scroll;
+}
+
+#descriptionCompleted{
+  display: flex;
+  border: 2px solid rgba(128, 128, 128, 0.212);
+  min-width: 100%;
+  padding-bottom: 10px;
+  color: #fff;
+}
+#descriptionCompleted #description{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width:100%;
+  padding: 15px;
+  font-size: 1vw;
+  cursor: pointer;
+}
+#descriptionCompleted #description p{
+  width:100%;
+  font-size: 1vw;
+  text-align: justify;
+}
+#descriptionCompleted #description button{
+  transition: all .2s;
+  width:60%;
+  height:clamp(5px,5vh,25px);
+  background-color: rgb(5, 197, 171);
+  border: none;
+  border-radius: 10px;
+  outline: none;
+  cursor: pointer;
+}
+#descriptionCompleted #description button:hover{
+  background-color: rgb(10, 117, 103);
+}
+#findMovieResult #descriptionCompleted img{
+  
+  width:clamp(120px,2vw,450px);
+
 }
