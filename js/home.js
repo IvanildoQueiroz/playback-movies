@@ -451,5 +451,5 @@ logout.addEventListener('click', () => {
   sessionStorage.removeItem('user');
   localStorage.removeItem('dataUser')
   window.location.reload();
-  location.href = '/index.html'
+  location.href = '/'
 })
