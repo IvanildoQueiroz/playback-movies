@@ -128,7 +128,37 @@ function getMoviesApi(mov, ser, up) {
 
       return [li, data];
     }
+    function showDataGeneresOfMovie(){
+      const allGeneres = document.querySelectorAll('.navType')
+      allGeneres.forEach((e,i)=>{
+        e.addEventListener('click',(e)=>{
+          console.log(e);
+          interfaceGeneres();
+          console.log('function run');
+        })
+      })
+    }
+    showDataGeneresOfMovie()
 
+    function interfaceGeneres(){
+      const body = document.querySelector('body');
+      body.style.overflow = 'hidden'
+
+      const screen = document.createElement('div');
+      screen.setAttribute('id','interfaceGeneres');
+
+      const btnExit = document.createElement('button');
+      btnExit.setAttribute('id','btnExit');
+      btnExit.textContent = "X";
+
+      screen.appendChild(btnExit);
+      body.appendChild(screen);
+
+      btnExit.addEventListener('click',()=>{
+        screen.remove();
+        body.style.overflow = 'scroll'
+      })
+    }
     function activeBtn() {
       let current_item_lanc = 0;
       let current_item_action = 0;
