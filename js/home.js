@@ -134,15 +134,15 @@ function getMoviesApi(mov, ser, up) {
         e.addEventListener('click',(e)=>{
           const el = e.target.
           className;
-            if(el === "list-films")interfaceGeneres(mov);
-            if(el === "list-series")interfaceGeneres(ser);
-            if(el === "list-movies-top")interfaceGeneres(up); 
+            if(el === "list-films")interfaceGeneres(mov,'Filmes');
+            if(el === "list-series")interfaceGeneres(ser,'Series');
+            if(el === "list-movies-top")interfaceGeneres(up,'Top-Lista'); 
         })
       })
     }
     showDataGeneresOfMovie()
 
-    function interfaceGeneres(movie){
+    function interfaceGeneres(movie,typeMovie){
       
       const body = document.querySelector('body');
       body.style.overflow = 'hidden'
@@ -154,20 +154,30 @@ function getMoviesApi(mov, ser, up) {
       btnExit.setAttribute('id','btnExit');
       btnExit.textContent = "X";
 
+      const titleTopScreen = document.createElement('h1');
+      titleTopScreen.textContent = typeMovie;
+
       screen.appendChild(btnExit);
+      screen.appendChild(titleTopScreen)
 
       movie.forEach(e=>{
         const li = document.createElement("li");
-        li.setAttribute('class','imageGenere')
 
         let image = document.createElement("img");
         
-        image.setAttribute(
-          "src",
-          `https://image.tmdb.org/t/p/w500${e.poster_path})`
-          );
+            image.setAttribute(
+              "src",
+              `https://image.tmdb.org/t/p/w500${e.poster_path})`
+              );
+
           li.appendChild(image);
+
+          li.addEventListener('click',()=>{
+            showDataMovie(e);
+          })
+
           screen.appendChild(li);
+         
       })
 
       body.appendChild(screen);
@@ -175,7 +185,8 @@ function getMoviesApi(mov, ser, up) {
       btnExit.addEventListener('click',()=>{
         screen.remove();
         body.style.overflow = 'scroll'
-      })
+      });
+
     }
     function activeBtn() {
       let current_item_lanc = 0;
@@ -318,6 +329,7 @@ function showDataMovie(movie) {
   const screen = document.querySelector("body");
   const fullScreen = document.createElement("div");
   fullScreen.setAttribute("class", "full-screen");
+  screen.style.overflow = 'hidden';
 
   const image = document.createElement("img");
   image.setAttribute(
