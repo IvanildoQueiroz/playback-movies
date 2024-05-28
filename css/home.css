@@ -80,13 +80,8 @@ header {
   height: 100%;
   cursor: pointer;
 }
-.navType li a {
-  text-decoration: none;
-  color: rgb(243, 240, 240);
-  font: normal 15px helvetica;
-  width: 100%;
-}
-.navType li,.navType li a {
+
+.navType li{
   width: 100%;
   opacity: 0;
   scale: 0;
@@ -99,14 +94,14 @@ header {
   background-color: #0ba2a557;
   width: 100%;
 }
-.navType:hover li,.navType:hover li a {
+.navType:hover li{
   scale: 1;
   opacity: 1;
 }
 .navType li:hover::before {
   content: '-> ';
 }
-#interfaceGeneres{
+.interfaceGeneres{
   min-height: 100vh;
   min-width: 100vw;
   background-color:var(--green-default);
@@ -115,11 +110,26 @@ header {
   bottom: 0;
   overflow-y: auto;
   padding: 10px;
+  display: flex;
+  gap: 1vw;
+  text-align: center;
+}
+.interfaceGeneres li{
+  width: 99vw;
+  list-style: none;
+  color: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 20px;
+}
+.imageGenere img{
+  min-width: 5vw;
+  min-height: 50px;
+  border-radius: 10px;
 }
 #btnExit{
-  position: absolute;
+  position: fixed;
   top: 5px;
-  right: 5px;
+  right: 25px;
   min-width:clamp(20px,30vw,40px);
   min-height:clamp(20px,30vw,40px);
   border: none;

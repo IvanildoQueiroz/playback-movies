@@ -132,26 +132,44 @@ function getMoviesApi(mov, ser, up) {
       const allGeneres = document.querySelectorAll('.navType')
       allGeneres.forEach((e,i)=>{
         e.addEventListener('click',(e)=>{
-          console.log(e);
-          interfaceGeneres();
-          console.log('function run');
+          const el = e.target.
+          className;
+            if(el === "list-films")interfaceGeneres(mov);
+            if(el === "list-series")interfaceGeneres(ser);
+            if(el === "list-movies-top")interfaceGeneres(up); 
         })
       })
     }
     showDataGeneresOfMovie()
 
-    function interfaceGeneres(){
+    function interfaceGeneres(movie){
+      
       const body = document.querySelector('body');
       body.style.overflow = 'hidden'
 
       const screen = document.createElement('div');
-      screen.setAttribute('id','interfaceGeneres');
+      screen.setAttribute('class','interfaceGeneres');
 
       const btnExit = document.createElement('button');
       btnExit.setAttribute('id','btnExit');
       btnExit.textContent = "X";
 
       screen.appendChild(btnExit);
+
+      movie.forEach(e=>{
+        const li = document.createElement("li");
+        li.setAttribute('class','imageGenere')
+
+        let image = document.createElement("img");
+        
+        image.setAttribute(
+          "src",
+          `https://image.tmdb.org/t/p/w500${e.poster_path})`
+          );
+          li.appendChild(image);
+          screen.appendChild(li);
+      })
+
       body.appendChild(screen);
 
       btnExit.addEventListener('click',()=>{
