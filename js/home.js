@@ -65,6 +65,7 @@ function getMoviesApi(mov, ser, up) {
       movies.appendChild(li);
       li.addEventListener('click',()=>{
         showDataMovie(mov[i])
+        document.querySelector('body').style.overflow='hidden'
       })
       
     }
@@ -142,9 +143,10 @@ function getMoviesApi(mov, ser, up) {
     }
     showDataGeneresOfMovie()
 
+    const body = document.querySelector('body');
+
     function interfaceGeneres(movie,typeMovie){
       
-      const body = document.querySelector('body');
       body.style.overflow = 'hidden'
 
       const screen = document.createElement('div');
@@ -236,6 +238,7 @@ function getMoviesApi(mov, ser, up) {
       ArraylistLanc.forEach((item, i) => {
         item[0].addEventListener("click", () => {
           showDataMovie(item[1]);
+          document.querySelector('body').style.overflow='hidden'
           current_item_lanc = i;
           updateCurrentItem();
         });
@@ -243,6 +246,7 @@ function getMoviesApi(mov, ser, up) {
       ArraylistTerror.forEach((item, i) => {
         item[0].addEventListener("click", () => {
           showDataMovie(item[1]);
+          document.querySelector('body').style.overflow='hidden'
           current_item_terror = i;
           updateCurrentItem();
         });
@@ -250,6 +254,7 @@ function getMoviesApi(mov, ser, up) {
       ArraylistAction.forEach((item, i) => {
         item[0].addEventListener("click", () => {
           showDataMovie(item[1]);
+          document.querySelector('body').style.overflow='hidden'
           current_item_action = i;
           updateCurrentItem();
         });
@@ -259,11 +264,11 @@ function getMoviesApi(mov, ser, up) {
         ArraylistAction.forEach((item, index) => {
           if (index === current_item_action) {
             item[0].classList.add("current-item");
-            item[0].scrollIntoView({
-              behavior: "smooth",
-              inline: "center",
-              block: "nearest",
-            });
+            // item[0].scrollIntoView({
+            //   behavior: "smooth",
+            //   inline: "center",
+            //   block: "nearest",
+            // });
           } else {
             item[0].classList.remove("current-item");
           }
@@ -271,11 +276,11 @@ function getMoviesApi(mov, ser, up) {
         ArraylistLanc.forEach((item, index) => {
           if (index === current_item_lanc) {
             item[0].classList.add("current-item");
-            item[0].scrollIntoView({
-              behavior: "smooth",
-              inline: "center",
-              block: "nearest",
-            });
+            // item[0].scrollIntoView({
+            //   behavior: "smooth",
+            //   inline: "center",
+            //   block: "nearest",
+            // });
           } else {
             item[0].classList.remove("current-item");
           }
@@ -283,11 +288,11 @@ function getMoviesApi(mov, ser, up) {
         ArraylistTerror.forEach((item, index) => {
           if (index === current_item_terror) {
             item[0].classList.add("current-item");
-            item[0].scrollIntoView({
-              behavior: "smooth",
-              inline: "center",
-              block: "nearest",
-            });
+            // item[0].scrollIntoView({
+            //   behavior: "smooth",
+            //   inline: "center",
+            //   block: "nearest",
+            // });
           } else {
             item[0].classList.remove("current-item");
           }
@@ -327,9 +332,9 @@ function showDataMovie(movie) {
   keyVideo = movie.id;
 
   const screen = document.querySelector("body");
+  
   const fullScreen = document.createElement("div");
   fullScreen.setAttribute("class", "full-screen");
-  screen.style.overflow = 'hidden';
 
   const image = document.createElement("img");
   image.setAttribute(
@@ -347,12 +352,14 @@ function showDataMovie(movie) {
   );
 
   fullScreen.classList.add("active-full-screen");
-  screen.appendChild(fullScreen).scrollIntoView({
+  screen.scrollIntoView({
     behavior: "smooth",
-    block: "start",
+    inline:"start"
   });
+  screen.appendChild(fullScreen)
 }
 
+//show interface of films clickeds
 function interfaceShowMovies(image, data_title, content, fullScreen, keyVideo) {
   const allDataMovies = document.createElement("div");
   allDataMovies.setAttribute("class", "all-data-movies");
@@ -383,16 +390,18 @@ function interfaceShowMovies(image, data_title, content, fullScreen, keyVideo) {
   informationRight.appendChild(button_watch);
   informationRight.appendChild(button_close);
 
+  //remove interface with details of movies
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") fullScreen.remove();
+    document.querySelector('body').style.overflow = 'scroll';
   });
 
   button_close.addEventListener("click", () => {
     fullScreen.classList.remove("active-full-screen");
     fullScreen.remove();
+    document.querySelector('body').style.overflow = 'scroll';
   });
 
-  //button.addEventListener()
   dataMovies.appendChild(informationLeft);
   dataMovies.appendChild(informationRight);
   allDataMovies.appendChild(dataMovies);
