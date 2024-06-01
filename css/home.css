@@ -511,6 +511,7 @@ header {
   background-color: #090909f8;
   overflow-y: scroll;
   align-items: center;
+  box-sizing: content-box;
 }
 
 #return-full-screen {
@@ -530,9 +531,10 @@ header {
   flex-direction: column;
   gap: 10px;
   width: clamp(320px,80vw,750px);
-  height:clamp(550px,100vw,950px);
+  height:clamp(550px,100vw,850px);
   color: #fff;
   background-color: #46434386;
+  box-sizing: content-box;
 }
 #data-movies {
   position: relative;
@@ -594,9 +596,9 @@ header {
   padding: 10px;
 }
 #video {
+  min-height: 520px;
   background-color: #2e2d2d;
   width: clamp(320px, 100%, 650px);
-  min-height: clamp(320px, 50%, 550px);
   margin: 0 auto;
   border-radius: 10px;
 }
