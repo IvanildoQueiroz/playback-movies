@@ -1,5 +1,6 @@
-const btnCad = document.querySelector("#btn-cad");
+const btnCad = document.querySelector("#cad");
 const btnLogin = document.querySelector("#login");
+const btnRegister = document.querySelector('#btn-register');
 const user = document.querySelector("#user");
 const password = document.querySelector("#password");
 const btnSaveData = document.querySelector("#save-data");
@@ -10,9 +11,6 @@ btnCad.addEventListener("click", (e) => {
   showScreenRegister();
 });
 
-function showScreenRegister() {
-}
-
 btnLogin.addEventListener("click", (e) => {
   e.preventDefault();
   if (saveData === true) {
@@ -21,6 +19,14 @@ btnLogin.addEventListener("click", (e) => {
   }
   validatioUser(user.value, password.value);
 });
+btnRegister.addEventListener('click',()=>{
+  document.querySelector(".second-container").style.display="block"
+})
+function showScreenRegister() {
+  const screenRegister = document.querySelector(".second-container");
+  screenRegister.style.display = 'none'
+}
+
 
 function validatioUser(user, password) {
 

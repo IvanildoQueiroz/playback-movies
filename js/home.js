@@ -528,11 +528,11 @@ function addDataUserlogin(){
 }
 addDataUserlogin()
 
-const logout = document.querySelector('.logout');
+const logout = document.querySelector('#logout');
 
 logout.addEventListener('click', () => {
   sessionStorage.removeItem('user');
   localStorage.removeItem('dataUser')
   window.location.reload();
-  location.href = '/'
+  
 })

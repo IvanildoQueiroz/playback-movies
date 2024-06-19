@@ -25,7 +25,7 @@ body {
   padding-top: 40px;
   position: relative;
 }
-.container {
+.first-container,.second-container {
   margin: 0px auto;
   width: 350px;
   height: 500px;
@@ -33,7 +33,44 @@ body {
   border-top: 8px solid var(--primary-color);
   padding: 0 20px;
 }
-.container h2 {
+.second-container{
+  display: none;
+  position: absolute;
+  background-color: var(--primary-color);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.second-container label{
+  color: aliceblue;
+  font-size: 18px;
+  font-weight: bold;
+  display: block;
+  text-align: left;
+}
+.second-container input{
+  width: 100%;
+  padding: 10px 20px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  color: green;
+}
+.second-container button{
+  width: 100%;
+  padding: 10px 20px;
+  margin-top: 40px;
+  background-color: #fff;
+  color: var(--primary-color-hover);
+  font: bold 18px 'Roboto',sans-serif;
+}
+.second-container button:hover{
+
+  color: #fff;
+ 
+}
+.first-container h2,.second-container h2 {
   color: var(--primary-color);
   text-shadow: 1px 1px 5px rgb(245, 242, 242);
   margin: 20px 0;
@@ -115,4 +152,12 @@ footer {
   bottom: 0;
   color: azure;
   padding-top: 10px;
+}
+@keyframes upScreen{
+  0%{
+    transform: translateY(100%);
+    }
+    100%{
+      transform: translateY(0);
+      }
 }

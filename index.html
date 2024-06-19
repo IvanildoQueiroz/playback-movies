@@ -6,10 +6,13 @@
     <title>VantFlix</title>
     <link rel="stylesheet" href="css/index.css">
     <script src="js/index.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,100;1,700;1,900&display=swap" rel="stylesheet">
 </head>
 <body>
     <main>
-        <div class="container">
+        <div class="first-container">
             <h2>VANT<br>FLIX</h2>
             <div class="dataUser">
                 <input type="email" placeholder="email" id="user">
@@ -23,8 +26,20 @@
             <div class="access">
                 <button id="login">Login</button>
                 <p>Ou</p>
-                <button id="btn-cad">Cadastre-se</button>
+                <button id="btn-register">Registre-se</button>
             </div>
+        </div>
+        <div class="second-container">
+            <h2>Cadastre-se</h2>
+            <form action="">
+                <label for="newUser"> Nome</label>
+                <input type="text" name="nome" id="newUserName">
+                <label for="newEmail">Email</label>
+                <input type="email" name="email" id="newUserEmail">
+                <label for="newPassword">Senha</label>
+                <input type="password" name="senha" id="newUserPassword">
+                <button id="cad">Cadastrar</button>
+            </form>
         </div>
     </main>
     <footer>
