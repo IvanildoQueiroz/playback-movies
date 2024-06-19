@@ -63,9 +63,12 @@ function getMoviesApi(mov, ser, up) {
       li.appendChild(dataForDescription);
       li.classList.add("active-movies");
       movies.appendChild(li);
+
       li.addEventListener('click',()=>{
-        showDataMovie(mov[i])
-        document.querySelector('body').style.overflow='hidden'
+        document.querySelector('body').style.overflow='hidden';
+        showDataMovie(mov[i]).scrollIntoView({
+          behavior: "smooth"
+        })
       })
       
     }
@@ -176,6 +179,7 @@ function getMoviesApi(mov, ser, up) {
 
           li.addEventListener('click',()=>{
             showDataMovie(e);
+            document.querySelector('body').style.overflow='hidden';
           })
 
           screen.appendChild(li);
