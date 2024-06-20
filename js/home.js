@@ -1,9 +1,12 @@
+const body = document.querySelector('body');
+var movieSearchPanel = false;
+
 const url_movie =
   "https://api.themoviedb.org/3/discover/movie?api_key=a406b143ca1f900e34b5f94b65620223";
 const url_series =
   "https://api.themoviedb.org/3/discover/tv?api_key=a406b143ca1f900e34b5f94b65620223";
 const url_upcoming =
-  "https://api.themoviedb.org/3/movie/top_rated?api_key=a406b143ca1f900e34b5f94b65620223";
+"https://api.themoviedb.org/3/movie/top_rated?api_key=a406b143ca1f900e34b5f94b65620223";
 
 const movies = document.querySelector(".list-movies");
 //const series = document.querySelector(".list-series");
@@ -11,7 +14,7 @@ const movies = document.querySelector(".list-movies");
 
 function getApi(url_movie, url_series, url_upcoming) {
   const seriePromise = fetch(url_series)
-    .then((res) => res.json())
+  .then((res) => res.json())
     .then((data) => {
       return data.results;
     });
@@ -25,8 +28,8 @@ function getApi(url_movie, url_series, url_upcoming) {
     .then((data) => {
       return data.results;
     });
-
-  Promise.all([moviePromise, seriePromise, movieUpcomming])
+    
+    Promise.all([moviePromise, seriePromise, movieUpcomming])
     .then(([moviesData, seriesData, movieUpcomming]) => {
       getMoviesApi(moviesData, seriesData, movieUpcomming);
     })
@@ -38,6 +41,8 @@ getApi(url_movie, url_series, url_upcoming);
 
 function getMoviesApi(mov, ser, up) {
   function cardsMoviesInitial(mov, ser) {
+
+
     for (let i = 0; i <= 2; i++) {
       const li = document.createElement("li");
       let title = document.createElement("h2");
@@ -80,8 +85,8 @@ function getMoviesApi(mov, ser, up) {
       setInterval(() => {
         previousCount = count;
         document
-          .querySelector("#btn_" + previousCount)
-          .removeAttribute("checked", "true");
+        .querySelector("#btn_" + previousCount)
+        .removeAttribute("checked", "true");
         count > 2 ? (count = 1) : count++;
         document.querySelector("#btn_" + count).setAttribute("checked", "true");
       }, 5000);
@@ -89,6 +94,7 @@ function getMoviesApi(mov, ser, up) {
 
     getLists();
   }
+  
 
   function getAllMoviesTheme(mov, ser, up) {
     //console.log(vid)
@@ -146,10 +152,11 @@ function getMoviesApi(mov, ser, up) {
     }
     showDataGeneresOfMovie()
 
-    const body = document.querySelector('body');
 
     function interfaceGeneres(movie,typeMovie){
-      
+
+      movieSearchPanel = true;
+
       body.style.overflow = 'hidden'
 
       const screen = document.createElement('div');
@@ -189,8 +196,10 @@ function getMoviesApi(mov, ser, up) {
       body.appendChild(screen);
 
       btnExit.addEventListener('click',()=>{
+        movieSearchPanel = false;
         screen.remove();
         body.style.overflow = 'scroll'
+        
       });
 
     }
@@ -403,7 +412,14 @@ function interfaceShowMovies(image, data_title, content, fullScreen, keyVideo) {
   button_close.addEventListener("click", () => {
     fullScreen.classList.remove("active-full-screen");
     fullScreen.remove();
-    document.querySelector('body').style.overflow = 'scroll';
+
+    if(!movieSearchPanel){
+      document.querySelector('body').style.overflow = 'scroll';
+      console.log('screen liberado')
+    }else{
+      document.querySelector('body').style.overflow = 'hidden';
+      console.log('screen nao liberado')
+    }
   });
 
   dataMovies.appendChild(informationLeft);
@@ -433,10 +449,12 @@ function getVideoTrailer(movie) {
   return video;
 }
 
-const findMovieResult = document.createElement("div");
-findMovieResult.setAttribute("id", "findMovieResult");
 
 function findInterface(request) {
+
+  const findMovieResult = document.createElement("div");
+  findMovieResult.setAttribute("id", "findMovieResult");
+
   const findMovie = document.querySelector("#findMovie");
   findMovie.focus();
   findMovieResult.innerHTML = '';
@@ -458,6 +476,7 @@ function findInterface(request) {
     const button = document.createElement("button");
     button.textContent = "Ver";
     button.addEventListener('click',()=>{
+      document.querySelector('body').style.overflow='hidden'
       showDataMovie(e)
     })
     
@@ -519,8 +538,9 @@ function addDataUserlogin(){
       document.querySelector('#photo').style.backgroundImage = "url('../assets/imgAdmin.jpg')";
       //document.querySelector('#photo').style.backgroundColor = "red";
     }
-
+    
   }else{
+    document.querySelector('#photo').style.backgroundImage = "url('../assets/imgVisitor.png')";
     userLogin.innerHTML = "Guest";
   }
   

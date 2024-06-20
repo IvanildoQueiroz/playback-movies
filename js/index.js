@@ -8,6 +8,7 @@ let saveData = false;
 
 btnCad.addEventListener("click", (e) => {
   e.preventDefault();
+
   showScreenRegister();
 });
 
@@ -20,10 +21,13 @@ btnLogin.addEventListener("click", (e) => {
   validatioUser(user.value, password.value);
 });
 btnRegister.addEventListener('click',()=>{
-  document.querySelector(".second-container").style.display="block"
+
+  document.querySelector(".first-container").style.display="none"
+  document.querySelector(".second-container").style.display="block";
 })
 function showScreenRegister() {
   const screenRegister = document.querySelector(".second-container");
+  document.querySelector(".first-container").style.display="block"
   screenRegister.style.display = 'none'
 }
 

@@ -9,6 +9,7 @@
 :root {
   --primary-color: rgb(21, 115, 85);
   --primary-color-hover: rgb(16, 80, 60);
+  --second-color: #7aeeb2;
 }
 body {
   width: 100vw;
@@ -40,7 +41,9 @@ body {
 }
 .second-container{
   display: none;
-  background-color: var(--primary-color);
+  border-top:8px solid var(--second-color);
+  background-color: rgba(34, 169, 66, 0.678);
+  box-shadow: 0px 0px 8px white;
 }
 .second-container label{
   color: aliceblue;
@@ -61,8 +64,7 @@ body {
 .second-container button{
   width: 100%;
   padding: 10px 20px;
-  margin-top: 40px;
-  background-color: #fff;
+  background-color:var(--second-color);
   color: var(--primary-color-hover);
   font: bold 18px 'Roboto',sans-serif;
 }
@@ -79,6 +81,14 @@ body {
   
   animation: ;
   transition: all .2s ease;
+}
+.second-container h2:first-child{
+  color:var(--second-color);
+  text-shadow: 1px 1px 8px black;
+}
+.second-container h2{
+  color: #fff;
+  text-shadow: 1px 1px 5px var(--primary-color);
 }
 .dataUser {
   position: relative;
