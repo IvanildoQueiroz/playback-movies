@@ -12,24 +12,24 @@ const movies = document.querySelector(".list-movies");
 //const series = document.querySelector(".list-series");
 //const search = document.querySelector(".search");
 
-function getApi(url_movie, url_series, url_upcoming) {
-  const seriePromise = fetch(url_series)
+async function getApi(url_movie, url_series, url_upcoming) {
+  const seriePromise = await fetch(url_series)
   .then((res) => res.json())
     .then((data) => {
       return data.results;
     });
-  const moviePromise = fetch(url_movie)
+  const moviePromise = await fetch(url_movie)
     .then((res) => res.json())
     .then((data) => {
       return data.results;
     });
-  const movieUpcomming = fetch(url_upcoming)
+  const movieUpcomming = await fetch(url_upcoming)
     .then((res) => res.json())
     .then((data) => {
       return data.results;
     });
     
-    Promise.all([moviePromise, seriePromise, movieUpcomming])
+    await Promise.all([moviePromise, seriePromise, movieUpcomming])
     .then(([moviesData, seriesData, movieUpcomming]) => {
       getMoviesApi(moviesData, seriesData, movieUpcomming);
     })
@@ -42,7 +42,6 @@ getApi(url_movie, url_series, url_upcoming);
 function getMoviesApi(mov, ser, up) {
   function cardsMoviesInitial(mov, ser) {
 
-
     for (let i = 0; i <= 2; i++) {
       const li = document.createElement("li");
       let title = document.createElement("h2");
@@ -51,13 +50,7 @@ function getMoviesApi(mov, ser, up) {
       img.setAttribute(
         "src",
         `https://image.tmdb.org/t/p/w500/${mov[i].poster_path}`
-      );
-      let p1 = document.createElement("p");
-
-      if (mov[i].original_language == "en") {
-        p1.innerHTML = "English";
-      }
-
+);
       let p2 = document.createElement("p");
       p2.innerHTML = mov[i].overview;
       let dataForDescription = document.createElement("div");
@@ -80,24 +73,43 @@ function getMoviesApi(mov, ser, up) {
     function getLists() {
       let count = 1;
       let previousCount = 1;
-      document.querySelector("#btn_1").setAttribute("checked", "true");
-
-      setInterval(() => {
-        previousCount = count;
-        document
-        .querySelector("#btn_" + previousCount)
-        .removeAttribute("checked", "true");
-        count > 2 ? (count = 1) : count++;
-        document.querySelector("#btn_" + count).setAttribute("checked", "true");
-      }, 5000);
+      const intervalTime = 5000;
+      const radioButtons = document.querySelectorAll('.btn-radio');
+    
+      function setChecked(buttonId) {
+        document.querySelector(`#${buttonId}`).checked = true;
+      }
+    
+      function handleRadioButtonClick(e) {
+        const el = e.target.id;
+        count = el === 'btn_1' ? 1 : el === 'btn_2' ? 2 : 3;
+      }
+    
+      function initializeRadioButtons() {
+        radioButtons.forEach(item => {
+          item.addEventListener('click', handleRadioButtonClick);
+        });
+      }
+    
+      function autoSwitchButtons() {
+        setInterval(() => {
+          previousCount = count;
+          count = count > 2 ? 1 : count + 1;
+          setChecked(`btn_${count}`);
+        }, intervalTime);
+      }
+    
+      setChecked('btn_1');
+      initializeRadioButtons();
+      autoSwitchButtons();
     }
-
+    
     getLists();
   }
   
 
   function getAllMoviesTheme(mov, ser, up) {
-    //console.log(vid)
+
     const listAction = document.querySelector(".action");
     const listTerror = document.querySelector(".terror");
     const listLanc = document.querySelector(".lanc");
@@ -108,7 +120,7 @@ function getMoviesApi(mov, ser, up) {
 
     for (let i = 0; i < mov.length; i++) {
       let [movie, allData] = createElementsList(up[i]);
-      //console.log(movie)
+
       ArraylistLanc.push([movie, allData]);
       listLanc.appendChild(ArraylistLanc[i][0]);
     }
@@ -415,10 +427,8 @@ function interfaceShowMovies(image, data_title, content, fullScreen, keyVideo) {
 
     if(!movieSearchPanel){
       document.querySelector('body').style.overflow = 'scroll';
-      console.log('screen liberado')
     }else{
       document.querySelector('body').style.overflow = 'hidden';
-      console.log('screen nao liberado')
     }
   });
 
@@ -502,14 +512,17 @@ function findInterface(request) {
   findMovie.appendChild(findMovieResult);
 
 }
+let findMovieResultStatus = false;
 document.addEventListener("click", (e) => {
   const el = e.target;
-  if (el.id != "find-image") {
+  if (el.id != "find-image" && findMovieResultStatus) {
     findMovieResult.remove();
+    findMovieResultStatus = false;
   }
 });
 
 function findMovies(mov, result) {
+  findMovieResultStatus = true;
   let resultOfFind = [];
   mov.forEach((e, i) => {
     if (e.title.toLowerCase().includes(result.toLowerCase())) {

@@ -223,6 +223,7 @@ header {
   display: flex;
   justify-content: space-between;
 }
+
 #findMovie input {
   width: 100%;
   border-radius: 20px;
@@ -234,6 +235,7 @@ header {
   outline: none;
   caret-color: aqua;
 }
+
 #findMovie input::placeholder {
   font-size: max(15px, 1.2vw);
 }
@@ -302,7 +304,15 @@ header {
   width: 50%;
   height: 100%;
 }
-#btn_1:checked ~ .list-movies{
+input[type="radio"] {
+  display: none;
+}
+
+.list-movies {
+  transition: margin-left 0.9s ease-out;
+}
+
+#btn_1:checked ~ .list-movies {
   margin-left: -0%;
 }
 #btn_2:checked ~ .list-movies {
@@ -528,9 +538,9 @@ header {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  width: clamp(320px,80vw,750px);
+  width: clamp(250px,80vw,750px);
   height: clamp(550px,500px,750px);;
-  padding-bottom: 20px;
+  padding: 2px 5px 2px 20px;
   color: #fff;
   background-color: rgba(128, 128, 128, 0.151);
   overflow-y: scroll;
@@ -597,7 +607,7 @@ header {
 #video {
   min-height:clamp(550px,450px,890px);
   background-color: #2e2d2d;
-  width: clamp(320px, 100%, 650px);
+  width: clamp(290px, 100%, 650px);
   margin: 0 auto;
   border-radius: 10px;
 }
