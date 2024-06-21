@@ -221,65 +221,26 @@ function getMoviesApi(mov, ser, up) {
       let current_item_terror = 0;
       const btn = document.querySelectorAll(".btn");
 
-      btn.forEach((btn) => {
-        btn.addEventListener("click", (e) => {
-          btn_current = e.target.parentNode.parentNode.classList.value;
-          const left = e.target.classList.contains("left");
-
-          if (left && btn_current == "action") {
-            current_item_action =
-              current_item_action > 0 ? current_item_action - 1 : 0;
-          } else if (!left && btn_current == "action") {
-            current_item_action =
-              current_item_action < ArraylistAction.length - 1
-                ? current_item_action + 1
-                : ArraylistAction.length - 1;
-          }
-
-          if (left && btn_current == "lanc") {
-            current_item_lanc =
-              current_item_lanc > 0 ? current_item_lanc - 1 : 0;
-          } else if (!left && btn_current == "lanc") {
-            current_item_lanc =
-              current_item_lanc < ArraylistLanc.length - 1
-                ? current_item_lanc + 1
-                : ArraylistAction.length - 1;
-          }
-
-          if (left && btn_current == "terror") {
-            current_item_terror =
-              current_item_terror > 0 ? current_item_terror - 1 : 0;
-          } else if (!left && btn_current == "terror") {
-            current_item_terror =
-              current_item_terror < ArraylistTerror.length - 1
-                ? current_item_terror + 1
-                : ArraylistAction.length - 1;
-          }
-
-          updateCurrentItem();
-        });
-      });
-
       ArraylistLanc.forEach((item, i) => {
         item[0].addEventListener("click", () => {
+          document.querySelector('body').style.overflow='hidden';
           showDataMovie(item[1]);
-          document.querySelector('body').style.overflow='hidden'
           current_item_lanc = i;
           updateCurrentItem();
         });
       });
       ArraylistTerror.forEach((item, i) => {
         item[0].addEventListener("click", () => {
+          document.querySelector('body').style.overflow='hidden';
           showDataMovie(item[1]);
-          document.querySelector('body').style.overflow='hidden'
           current_item_terror = i;
           updateCurrentItem();
         });
       });
       ArraylistAction.forEach((item, i) => {
         item[0].addEventListener("click", () => {
+          document.querySelector('body').style.overflow='hidden';
           showDataMovie(item[1]);
-          document.querySelector('body').style.overflow='hidden'
           current_item_action = i;
           updateCurrentItem();
         });

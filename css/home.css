@@ -17,7 +17,6 @@ body {
   width: 100%;
   background-color: var(--green-default);
   position: relative;
-
 }
 .container {
   width: 100%;
@@ -545,7 +544,7 @@ input[type="radio"] {
   border-radius: 20px;
   display: flex;
   justify-content: space-around;
-  gap: 5px;
+  gap: 6%;
   color: #fff;
 }
 .information-left,
@@ -590,7 +589,7 @@ input[type="radio"] {
   height: 270px;
   color: white;
   text-indent: 20px;
-  font-size: clamp(12px, 1vw, 17px);
+  font-size: clamp(1px, 10px, 22px);
 }
 .all-data-movies h2 {
   font-size: 5vw;
